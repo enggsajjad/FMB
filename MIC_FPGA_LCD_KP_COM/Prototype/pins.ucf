@@ -1,0 +1,43 @@
+NET "P1_LSB<0>" LOC = "p161";#J3_25
+NET "P1_LSB<1>" LOC = "p160";#J3_26
+NET "P1_LSB<2>" LOC = "p163";#J3_27
+NET "P1_LSB<3>" LOC = "p162";#J3_28
+NET "P1_MSB<0>" LOC = "p165";#J3_29
+NET "P1_MSB<1>" LOC = "p164";#J3_25
+NET "P1_MSB<2>" LOC = "p167";#J3_26
+NET "P1_MSB<3>" LOC = "p166";#J3_27
+
+NET "P0<7>" LOC = "p194";#J3_25
+NET "P0<6>" LOC = "p195";#J3_26
+NET "P0<5>" LOC = "p199";#J3_27
+NET "P0<4>" LOC = "p200";#J3_28
+NET "P0<3>" LOC = "p201";#J3_29
+NET "P0<2>" LOC = "p202";#J3_25
+NET "P0<1>" LOC = "p203";#J3_26
+NET "P0<0>" LOC = "p204";#J3_27
+
+NET "P3_0" LOC = "p172";#RXD
+NET "P3_1" LOC = "p168";#TXD
+NET "P3_2" LOC = "p174";#INT0
+
+NET "Key<0>" 	LOC = "p154";#J3_25
+NET "Key<1>" 	LOC = "p152";#J3_26
+NET "Key<2>" 	LOC = "p150";#J3_27
+NET "Key<3>" 	LOC = "p148";#J3_28
+NET "KeyIntr" 	LOC = "p142";#J3_29
+
+NET "LcdRS" LOC = "p153";#J3_27
+NET "LcdRW" LOC = "p151";#J3_27
+NET "LcdEN" LOC = "p149";#J3_27
+NET "LcdBus<0>" LOC = "p147";#J3_25
+NET "LcdBus<1>" LOC = "p146";#J3_26
+NET "LcdBus<2>" LOC = "p140";#J3_27
+NET "LcdBus<3>" LOC = "p139";#J3_28
+NET "LcdBus<4>" LOC = "p136";#J3_29
+NET "LcdBus<5>" LOC = "p134";#J3_25
+NET "LcdBus<6>" LOC = "p132";#J3_26
+NET "LcdBus<7>" LOC = "p127";#J3_27
+NET "LcdBK" LOC = "p125";#J3_27
+
+NET "MAX9" LOC = "p141";#rx
+NET "MAX10" LOC = "p138";#tx

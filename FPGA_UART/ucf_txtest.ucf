@@ -1,0 +1,4 @@
+NET "res" LOC = "p36";
+NET "rx" LOC = "p147";
+NET "tx" LOC = "p146";
+NET "clk" LOC = "p77";

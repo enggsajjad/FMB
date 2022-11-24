@@ -1,0 +1,27 @@
+JDF G
+// Created by Project Navigator ver 1.0
+PROJECT Prototype
+DESIGN prototype
+DEVFAM spartan2
+DEVFAMTIME 0
+DEVICE xc2s200
+DEVICETIME 0
+DEVPKG pq208
+DEVPKGTIME 0
+DEVSPEED -6
+DEVSPEEDTIME 0
+DEVTOPLEVELMODULETYPE HDL
+TOPLEVELMODULETYPETIME 0
+DEVSYNTHESISTOOL XST (VHDL/Verilog)
+SYNTHESISTOOLTIME 0
+DEVSIMULATOR Modelsim
+SIMULATORTIME 0
+DEVGENERATEDSIMULATIONMODEL Verilog
+GENERATEDSIMULATIONMODELTIME 0
+SOURCE mapping.v
+DEPASSOC mapping pins.ucf
+[Normal]
+p_xstEquivRegRemoval=xstvlg, spartan2, Schematic.t_synthesize, 1249033664, False
+p_xstSlicePacking=xstvlg, spartan2, Schematic.t_synthesize, 1249033664, False
+[STRATEGY-LIST]
+Normal=True

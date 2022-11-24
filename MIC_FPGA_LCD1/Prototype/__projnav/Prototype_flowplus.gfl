@@ -1,0 +1,6 @@
+# XST flow : Creating project file
+iobuf8bit.prj
+# xst flow : RunXST
+iobuf8bit.prj
+__projnav/iobuf8bit.xst
+./xst

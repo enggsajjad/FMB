@@ -1,0 +1,602 @@
+C51 COMPILER V6.11.4C,  MAIN                      08/26/109  16:47:48  PAGE  1
+
+QCW(0x00002D1A)
+
+WIN32 C51 COMPILER V6.11.4C, COMPILATION OF MODULE MAIN      
+OBJECT MODULE PLACED IN f:\fpga_micro_board\mic_fpga_lcd_kp_com\lcd_kp_com\main.
+            -obj
+COMPILER INVOKED BY: C51.EXE F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD_KP_COM\LCD_KP_COM\
+            -MAIN.C OBJECT(F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD_KP_COM\LCD_KP_COM\MA
+            -IN.OBJ) PIN(C:\FSI\INC) NOAM PR(F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD_KP
+            -_COM\LCD_KP_COM\MAIN.LST) CD SB OE(1) SM FP(NOFLOAT) PW(80) 
+
+stmt level    source
+   1          /** **************************************************************
+            -*******************************
+   2          Programmer:		SAJJAD HUSSAIN S.E.
+   3          Date:				30-07-2009
+   4          Description:	see the ReadMe.txt
+   5          ******************************************************************
+            -*****************************/
+   6          #include <at89c51rc2.h>
+   7          #include "lcd.h"
+   8          unsigned char Key,RecChar;
+   9          bit rxFlag;
+  10          void main(void)
+  11          {          
+  12   1      	int i;
+  13   1      	SCON   = 0x50;
+  14   1      	TCON 	 = 0x05;
+  15   1      	TMOD   = 0x21;
+  16   1      	TL1 = -1;
+  17   1      	TH1 = -1;
+  18   1      	TR1 = 1;
+  19   1      	for(i=0;i<1000;i++)
+  20   1      		DelayOnems();
+  21   1      	P1 = 0xF0;
+  22   1      	LcdInit();
+  23   1      	LcdClear();
+  24   1      	LcdWriteStr("MIC_FPGA_LCD_KP");
+  25   1      	ES = 1;
+  26   1      	EX0 = 1;
+  27   1      	IT0 = 1;
+  28   1      	EA = 1;
+  29   1      	SendChar('S');
+  30   1      	SendChar('a');
+  31   1      	SendChar('j');
+  32   1      	SendChar('j');
+  33   1      	SendChar('a');
+  34   1      	SendChar('d');
+  35   1      	
+  36   1      	while(1)
+  37   1      	{
+  38   2      	 if(rxFlag)
+  39   2      	 {
+  40   3      	 	rxFlag = 0;
+  41   3      	 	Putc(RecChar);
+  42   3      	 }
+  43   2      	}
+  44   1      }//main
+  45          
+  46          void keypad() interrupt 0
+  47          {
+  48   1      	Key = P2&0xF0;
+  49   1      	Key = Key>>4;
+  50   1      	LcdClear();
+  51   1      	Putc(Key+48);
+  52   1      }
+  53          void Serial() interrupt 4
+  54          {
+  55   1      	if (RI)
+  56   1      	{
+  57   2      		RI = 0;
+  58   2      		RecChar = SBUF;
+  59   2      		rxFlag = 1;
+  60   2      	}//end RI
+  61   1      }
+  62           
+  63          
+  64          
+  65          
+  66          
+  67          
+  68          
+  69          
+  70          
+  71          
+  72          
+  73          
+  74          
+  75          
+  76          
+  77          
+  78          
+  79          
+  80          
+  81          
+  82          
+  83          
+  84          
+  85          
+  86          
+  87          
+  88          
+  89          
+  90          
+  91          
+  92          
+  93          
+  94          
+  95          
+  96          
+C51 COMPILER V6.11.4C,  MAIN                      08/26/109  16:47:49  PAGE  2
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+            ; FUNCTION DelayOnems (BEGIN)
+                                           ; SOURCE LINE # 9 
+0000 758ACD         MOV    TL0,#0CDH
+                                           ; SOURCE LINE # 10 
+0003 758CF8         MOV    TH0,#0F8H
+                                           ; SOURCE LINE # 11 
+0006 D28C           SETB   TR0
+0008         ?WHILE1:
+                                           ; SOURCE LINE # 12 
+0008 308DFD         JNB    TF0,?WHILE1
+                                           ; SOURCE LINE # 13 
+000B C28C           CLR    TR0
+                                           ; SOURCE LINE # 14 
+000D C28D           CLR    TF0
+000F 22             RET    
+
+            ; FUNCTION DelayOnems (END)
+
+            ; FUNCTION _DelaySec (BEGIN)
+              ; Register R3 is assigned to parameter ds
+                                           ; SOURCE LINE # 20 
+0000 8F03           MOV    AR3,R7
+                                           ; SOURCE LINE # 19 
+0002 E4             CLR    A
+0003 F500    R      MOV    k,A
+0005 F500    R      MOV    k+01H,A
+0007         ?FOR1:
+0007 EB             MOV    A,R3
+0008 FF             MOV    R7,A
+0009 7E00           MOV    R6,#000H
+000B 7C03           MOV    R4,#003H
+000D 7DE8           MOV    R5,#0E8H
+000F 120000  R      LCALL  ?C_IMUL
+0012 E500    R      MOV    A,k
+0014 B50605         CJNE   A,AR6,?LAB6
+0017 E500    R      MOV    A,k+01H
+0019 B50700         CJNE   A,AR7,?LAB6
+001C         ?LAB6:
+001C 500D           JNC    ?NXT4
+                                           ; SOURCE LINE # 20 
+001E 120000  R      LCALL  DelayOnems
+                                           ; SOURCE LINE # 19 
+0021 0500    R      INC    k+01H
+0023 E500    R      MOV    A,k+01H
+0025 70E0           JNZ    ?FOR1
+0027 0500    R      INC    k
+0029 80DC           SJMP   ?FOR1
+002B         ?NXT4:
+002B 22             RET    
+
+            ; FUNCTION _DelaySec (END)
+
+            ; FUNCTION Getc (BEGIN)
+0000         ?WHILE3:
+                                           ; SOURCE LINE # 25 
+0000 3098FD         JNB    RI,?WHILE3
+              ; R6 is assigned to c
+0003 AE99           MOV    R6,SBUF
+0005 8E07           MOV    AR7,R6
+0007 C298           CLR    RI
+                                           ; SOURCE LINE # 26 
+0009 22             RET    
+
+            ; FUNCTION Getc (END)
+
+            ; FUNCTION _SendChar (BEGIN)
+              ; Register R7 is assigned to parameter ch
+                                           ; SOURCE LINE # 30 
+0000 D299           SETB   TI
+0002         ?WHILE6:
+                                           ; SOURCE LINE # 31 
+0002 3099FD         JNB    TI,?WHILE6
+0005 C299           CLR    TI
+0007 8F99           MOV    SBUF,R7
+0009         ?WHILE7:
+                                           ; SOURCE LINE # 32 
+0009 3099FD         JNB    TI,?WHILE7
+000C C299           CLR    TI
+000E 22             RET    
+
+            ; FUNCTION _SendChar (END)
+
+            ; FUNCTION _SendStr (BEGIN)
+              ; Register R0R4R5 is assigned to parameter cmd
+                                           ; SOURCE LINE # 42 
+0000 EB             MOV    A,R3
+0001 FD             MOV    R5,A
+0002 EA             MOV    A,R2
+0003 FC             MOV    R4,A
+0004 E9             MOV    A,R1
+0005 F8             MOV    R0,A
+                                           ; SOURCE LINE # 36 
+0006 D299           SETB   TI
+0008         ?WHILE11:
+                                           ; SOURCE LINE # 37 
+0008 ED             MOV    A,R5
+0009 FB             MOV    R3,A
+000A EC             MOV    A,R4
+000B FA             MOV    R2,A
+000C E8             MOV    A,R0
+000D F9             MOV    R1,A
+000E 120000  R      LCALL  IPGN1?C
+0011 6017           JZ     ?WHILE13
+0013         ?WHILE12:
+                                           ; SOURCE LINE # 39 
+0013 3099FD         JNB    TI,?WHILE12
+0016 C299           CLR    TI
+0018 ED             MOV    A,R5
+0019 FB             MOV    R3,A
+001A EC             MOV    A,R4
+001B FA             MOV    R2,A
+001C E8             MOV    A,R0
+001D F9             MOV    R1,A
+001E 120000  R      LCALL  IPGN1?C
+0021 F599           MOV    SBUF,A
+                                           ; SOURCE LINE # 40 
+0023 08             INC    R0
+0024 E8             MOV    A,R0
+0025 70E1           JNZ    ?WHILE11
+0027 0C             INC    R4
+0028 80DE           SJMP   ?WHILE11
+002A         ?WHILE13:
+                                           ; SOURCE LINE # 42 
+002A 3099FD         JNB    TI,?WHILE13
+002D C299           CLR    TI
+002F 22             RET    
+
+            ; FUNCTION _SendStr (END)
+
+            ; FUNCTION LcdBusy (BEGIN)
+                                           ; SOURCE LINE # 47 
+0000 7580FF         MOV    P0,#0FFH
+                                           ; SOURCE LINE # 48 
+0003 D287           SETB   BS
+                                           ; SOURCE LINE # 49 
+0005 D293           SETB   EN
+                                           ; SOURCE LINE # 50 
+0007 C291           CLR    RS
+                                           ; SOURCE LINE # 51 
+0009 D292           SETB   RW
+000B         ?WHILE15:
+                                           ; SOURCE LINE # 52 
+000B 308706         JNB    BS,?NXT19
+                                           ; SOURCE LINE # 54 
+000E C293           CLR    EN
+                                           ; SOURCE LINE # 55 
+0010 D293           SETB   EN
+0012 80F7           SJMP   ?WHILE15
+0014         ?NXT19:
+0014 22             RET    
+
+            ; FUNCTION LcdBusy (END)
+
+            ; FUNCTION _LcdWriteCmd (BEGIN)
+              ; Register R7 is assigned to parameter var
+                                           ; SOURCE LINE # 60 
+0000 758000         MOV    P0,#000H
+                                           ; SOURCE LINE # 61 
+0003 8F80           MOV    P0,R7
+                                           ; SOURCE LINE # 62 
+0005 C291           CLR    RS
+                                           ; SOURCE LINE # 63 
+0007 C292           CLR    RW
+                                           ; SOURCE LINE # 64 
+0009 D293           SETB   EN
+                                           ; SOURCE LINE # 65 
+000B C293           CLR    EN
+                                           ; SOURCE LINE # 66 
+000D 120000  R      LCALL  LcdBusy
+0010 22             RET    
+
+            ; FUNCTION _LcdWriteCmd (END)
+
+            ; FUNCTION _LcdWriteChar (BEGIN)
+              ; Register R7 is assigned to parameter var
+                                           ; SOURCE LINE # 70 
+0000 758000         MOV    P0,#000H
+                                           ; SOURCE LINE # 71 
+0003 8F80           MOV    P0,R7
+                                           ; SOURCE LINE # 72 
+0005 D291           SETB   RS
+                                           ; SOURCE LINE # 73 
+0007 C292           CLR    RW
+                                           ; SOURCE LINE # 74 
+0009 D293           SETB   EN
+                                           ; SOURCE LINE # 75 
+000B C293           CLR    EN
+                                           ; SOURCE LINE # 76 
+000D 120000  R      LCALL  LcdBusy
+0010 22             RET    
+
+            ; FUNCTION _LcdWriteChar (END)
+
+            ; FUNCTION LcdInit (BEGIN)
+                                           ; SOURCE LINE # 80 
+0000 7F38           MOV    R7,#038H
+0002 120000  R      LCALL  _LcdWriteCmd
+                                           ; SOURCE LINE # 81 
+0005 120000  R      LCALL  _LcdWriteCmd
+                                           ; SOURCE LINE # 82 
+0008 120000  R      LCALL  _LcdWriteCmd
+                                           ; SOURCE LINE # 83 
+000B 7F06           MOV    R7,#006H
+000D 120000  R      LCALL  _LcdWriteCmd
+                                           ; SOURCE LINE # 84 
+0010 7F0C           MOV    R7,#00CH
+0012 120000  R      LCALL  _LcdWriteCmd
+0015 22             RET    
+
+            ; FUNCTION LcdInit (END)
+
+            ; FUNCTION _LcdWriteStr (BEGIN)
+              ; Register R0R4R5 is assigned to parameter var
+                                           ; SOURCE LINE # 89 
+0000 EB             MOV    A,R3
+0001 FD             MOV    R5,A
+0002 EA             MOV    A,R2
+0003 FC             MOV    R4,A
+0004 E9             MOV    A,R1
+0005 F8             MOV    R0,A
+0006         ?WHILE17:
+                                           ; SOURCE LINE # 88 
+0006 ED             MOV    A,R5
+0007 FB             MOV    R3,A
+0008 EC             MOV    A,R4
+0009 FA             MOV    R2,A
+000A E8             MOV    A,R0
+000B F9             MOV    R1,A
+000C 120000  R      LCALL  IPGN1?C
+000F 6015           JZ     ?NXT21
+                                           ; SOURCE LINE # 89 
+0011 ED             MOV    A,R5
+0012 FB             MOV    R3,A
+0013 EC             MOV    A,R4
+0014 FA             MOV    R2,A
+0015 E8             MOV    A,R0
+0016 F9             MOV    R1,A
+0017 08             INC    R0
+0018 E8             MOV    A,R0
+0019 7002           JNZ    ?LAB28
+001B 0C             INC    R4
+001C EC             MOV    A,R4
+001D         ?LAB28:
+001D 120000  R      LCALL  IPGN1?C
+0020 FF             MOV    R7,A
+0021 120000  R      LCALL  _LcdWriteChar
+0024 80E0           SJMP   ?WHILE17
+0026         ?NXT21:
+0026 22             RET    
+
+            ; FUNCTION _LcdWriteStr (END)
+
+            ; FUNCTION _LcdGotoXY (BEGIN)
+              ; Register R7 is assigned to parameter row
+              ; Register R5 is assigned to parameter col
+                                           ; SOURCE LINE # 93 
+0000 EF             MOV    A,R7
+0001 14             DEC    A
+0002 600A           JZ     ?CASE4
+0004 14             DEC    A
+0005 600F           JZ     ?CASE5
+0007 14             DEC    A
+0008 6014           JZ     ?CASE6
+000A 14             DEC    A
+000B 6019           JZ     ?CASE7
+000D 22             RET    
+000E         ?CASE4:
+                                           ; SOURCE LINE # 95 
+000E ED             MOV    A,R5
+000F 247F           ADD    A,#07FH
+0011 FF             MOV    R7,A
+0012 120000  R      LCALL  _LcdWriteCmd
+0015 22             RET    
+0016         ?CASE5:
+                                           ; SOURCE LINE # 96 
+0016 ED             MOV    A,R5
+0017 24BF           ADD    A,#0BFH
+0019 FF             MOV    R7,A
+001A 120000  R      LCALL  _LcdWriteCmd
+001D 22             RET    
+001E         ?CASE6:
+                                           ; SOURCE LINE # 97 
+001E ED             MOV    A,R5
+001F 2493           ADD    A,#093H
+0021 FF             MOV    R7,A
+0022 120000  R      LCALL  _LcdWriteCmd
+0025 22             RET    
+0026         ?CASE7:
+                                           ; SOURCE LINE # 98 
+0026 ED             MOV    A,R5
+0027 24D3           ADD    A,#0D3H
+0029 FF             MOV    R7,A
+002A 120000  R      LCALL  _LcdWriteCmd
+                                           ; SOURCE LINE # 99 
+002D 22             RET    
+
+            ; FUNCTION _LcdGotoXY (END)
+
+            ; FUNCTION LcdClear (BEGIN)
+                                           ; SOURCE LINE # 104 
+0000 7F01           MOV    R7,#001H
+0002 120000  R      LCALL  _LcdWriteCmd
+                                           ; SOURCE LINE # 105 
+0005 120000  R      LCALL  DelayOnems
+                                           ; SOURCE LINE # 106 
+0008 120000  R      LCALL  DelayOnems
+000B 22             RET    
+
+            ; FUNCTION LcdClear (END)
+
+            ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 13 
+0000 759850         MOV    SCON,#050H
+                                           ; SOURCE LINE # 14 
+0003 758805         MOV    TCON,#005H
+                                           ; SOURCE LINE # 15 
+0006 758921         MOV    TMOD,#021H
+                                           ; SOURCE LINE # 16 
+0009 758BFF         MOV    TL1,#0FFH
+                                           ; SOURCE LINE # 17 
+000C 758DFF         MOV    TH1,#0FFH
+                                           ; SOURCE LINE # 18 
+000F D28E           SETB   TR1
+              ; R4R5 is assigned to i
+                                           ; SOURCE LINE # 19 
+0011 E4             CLR    A
+0012 FC             MOV    R4,A
+0013 FD             MOV    R5,A
+0014         ?FOR3:
+                                           ; SOURCE LINE # 20 
+0014 120000  R      LCALL  DelayOnems
+                                           ; SOURCE LINE # 19 
+0017 0D             INC    R5
+0018 ED             MOV    A,R5
+0019 7001           JNZ    ?LAB40
+001B 0C             INC    R4
+001C         ?LAB40:
+001C BC03F5         CJNE   R4,#003H,?FOR3
+001F BDE8F2         CJNE   R5,#0E8H,?FOR3
+                                           ; SOURCE LINE # 21 
+0022 7590F0         MOV    P1,#0F0H
+                                           ; SOURCE LINE # 22 
+0025 120000  R      LCALL  LcdInit
+                                           ; SOURCE LINE # 23 
+0028 120000  R      LCALL  LcdClear
+                                           ; SOURCE LINE # 24 
+002B 7B05           MOV    R3,#005H
+002D 7A00    R      MOV    R2,#000H
+002F 7900    R      MOV    R1,#000H
+0031 120000  R      LCALL  _LcdWriteStr
+                                           ; SOURCE LINE # 25 
+0034 D2AC           SETB   ES
+                                           ; SOURCE LINE # 26 
+0036 D2A8           SETB   EX0
+                                           ; SOURCE LINE # 27 
+0038 D288           SETB   IT0
+                                           ; SOURCE LINE # 28 
+003A D2AF           SETB   EA
+                                           ; SOURCE LINE # 29 
+003C 7F53           MOV    R7,#053H
+003E 120000  R      LCALL  _SendChar
+                                           ; SOURCE LINE # 30 
+0041 7F61           MOV    R7,#061H
+0043 120000  R      LCALL  _SendChar
+                                           ; SOURCE LINE # 31 
+0046 7F6A           MOV    R7,#06AH
+0048 120000  R      LCALL  _SendChar
+                                           ; SOURCE LINE # 32 
+004B 120000  R      LCALL  _SendChar
+                                           ; SOURCE LINE # 33 
+004E 7F61           MOV    R7,#061H
+0050 120000  R      LCALL  _SendChar
+                                           ; SOURCE LINE # 34 
+0053 7F64           MOV    R7,#064H
+0055 120000  R      LCALL  _SendChar
+0058         ?WHILE19:
+                                           ; SOURCE LINE # 38 
+0058 3000FD  R      JNB    rxFlag,?WHILE19
+                                           ; SOURCE LINE # 40 
+005B C200    R      CLR    rxFlag
+                                           ; SOURCE LINE # 41 
+005D AF00    R      MOV    R7,RecChar
+005F 120000  R      LCALL  _LcdWriteChar
+0062 80F4           SJMP   ?WHILE19
+
+            ; FUNCTION main (END)
+
+            ; FUNCTION keypad (BEGIN)
+                                           ; SOURCE LINE # 51 
+0000 C0E0           PUSH   ACC
+0002 C0D0           PUSH   PSW
+0004 C007           PUSH   AR7
+                                           ; SOURCE LINE # 48 
+0006 E5A0           MOV    A,P2
+0008 54F0           ANL    A,#0F0H
+000A F500    R      MOV    Key,A
+                                           ; SOURCE LINE # 49 
+000C C4             SWAP   A
+000D 540F           ANL    A,#00FH
+000F F500    R      MOV    Key,A
+                                           ; SOURCE LINE # 50 
+0011 120000  R      LCALL  LcdClear
+                                           ; SOURCE LINE # 51 
+0014 2430           ADD    A,#030H
+0016 FF             MOV    R7,A
+0017 120000  R      LCALL  _LcdWriteChar
+001A D007           POP    AR7
+001C D0D0           POP    PSW
+001E D0E0           POP    ACC
+0020 32             RETI   
+
+            ; FUNCTION keypad (END)
+
+            ; FUNCTION Serial (BEGIN)
+                                           ; SOURCE LINE # 59 
+0000 C0D0           PUSH   PSW
+                                           ; SOURCE LINE # 55 
+0002 309807         JNB    RI,?NXT37
+                                           ; SOURCE LINE # 57 
+0005 C298           CLR    RI
+                                           ; SOURCE LINE # 58 
+0007 859900  R      MOV    RecChar,SBUF
+                                           ; SOURCE LINE # 59 
+000A D200    R      SETB   rxFlag
+000C         ?NXT37:
+000C D0D0           POP    PSW
+000E 32             RETI   
+
+            ; FUNCTION Serial (END)
+
+C51 COMPILER V6.11.4C,  MAIN                      08/26/109  16:47:49  PAGE  3
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+DelayOnems . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+DelaySec . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  ds?041 . . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+  ds?041 . . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+k?042. . . . . . . . . . . . . . . . .  PUBLIC  DATA    U_INT  0000H   2    
+Getc . . . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+c?044. . . . . . . . . . . . . . . . .  PUBLIC  DATA    BASE    0000H   1    
+SendChar . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  ch?045 . . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+  ch?045 . . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+SendStr. . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  cmd?046. . . . . . . . . . . . . . .  PARAM   DATA    PTR     0000H   3    
+  cmd?046. . . . . . . . . . . . . . .  PARAM   DATA    PTR     0000H   3    
+LcdBusy. . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+LcdWriteCmd. . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  var?047. . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+  var?047. . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+LcdWriteChar . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  var?048. . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+  var?048. . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+LcdInit. . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+LcdWriteStr. . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  var?049. . . . . . . . . . . . . . .  PARAM   DATA    PTR     0000H   3    
+  var?049. . . . . . . . . . . . . . .  PARAM   DATA    PTR     0000H   3    
+LcdGotoXY. . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  row?050. . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+  col?051. . . . . . . . . . . . . . .  PARAM   DATA    BASE    0001H   1    
+  row?050. . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+  col?051. . . . . . . . . . . . . . .  PARAM   DATA    BASE    0001H   1    
+LcdClear . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+Key. . . . . . . . . . . . . . . . . .  PUBLIC  DATA    BASE    0000H   1    
+RecChar. . . . . . . . . . . . . . . .  PUBLIC  DATA    BASE    0001H   1    
+rxFlag . . . . . . . . . . . . . . . .  PUBLIC  DATA    BIT     0000H   1    
+main . . . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+i?053. . . . . . . . . . . . . . . . .  PUBLIC  DATA    INT     0000H   2    
+keypad . . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+Serial . . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+C51 COMPILER V6.11.4C,  MAIN                      08/26/109  16:47:49  PAGE  4
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    455    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILATION COMPLETE.  0 WARNING,  0 ERROR

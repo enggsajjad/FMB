@@ -1,0 +1,91 @@
+m255
+o
+cModel Technology
+dF:\umair_projects\Projects_Verilog\HRDAS\uart\uart_finalized
+vclk_gen
+I2R3od2MQ6^4nE8eK8k<Jc1
+VTGIZJcQmZ]U0RWRZfD5OZ3
+dF:\FPGA_MICRO_BOARD\uart_finalized
+w1249893434
+Fclk_gen.v
+L0 1
+OX;L;5.6e;17
+r1
+31
+o-O0
+vglbl
+I;3bdO6U;R_i?oXm0zZ=6m3
+V]6_PH00iDgcD`AVz9`gA:0
+dF:\FPGA_MICRO_BOARD\uart_finalized
+w1059855545
+FC:/Xilinx6.1/verilog/src/glbl.v
+L0 5
+OX;L;5.6e;17
+r1
+31
+o-O0
+vtest_uar_tf
+IKPfd94f<51gHCee:[F6<O3
+VDlBAh4EHJ:2b[zDnjb`[Y2
+w1179299428
+Ftf_uar_test.v
+L0 3
+OX;L;5.6e;17
+r1
+31
+o-O0
+vtf_top_tx
+IAIYQ9b;[dXfalQa632iKO3
+V>M9gEFo4?_PYUhQfTAzHQ2
+dF:\FPGA_MICRO_BOARD\uart_finalized
+w1249910718
+Ftf_top_tx.v
+L0 3
+OX;L;5.6e;17
+r1
+31
+o-O0
+vtop_test_uar
+IjUig0;^:V3Al140JeRSiR1
+VH6JI0Y9O=nWHHN_f<IP[C2
+w1179307124
+Ftop_test_uar_timesim.v
+L0 18
+OX;L;5.6e;17
+r1
+31
+o-O0
+vtop_tx
+I6;JG:T>aj6ecFQ9WoOMYV0
+Vf71G3b8z`QEU@@:WXOKg?2
+dF:\FPGA_MICRO_BOARD\uart_finalized
+w1249910776
+Ftop_tx_timesim.v
+L0 18
+OX;L;5.6e;17
+r1
+31
+o-O0
+vUA_Receiver
+Id]GAgGId`AMX2BG^o6O341
+V8JG>BOl;K@5ZF;8UPaLPf0
+w1168509517
+FUA_Receiver.v
+L0 1
+OX;L;5.6e;17
+r1
+31
+o-O0
+n@u@a_@receiver
+vUA_Transmitter
+IeLB`3DAH>4CONHmz7`1aF1
+VCJk<knU819n=7ESLNQ?451
+dF:\FPGA_MICRO_BOARD\uart_finalized
+w1249910166
+FUA_Transmitter.v
+L0 1
+OX;L;5.6e;17
+r1
+31
+o-O0
+n@u@a_@transmitter

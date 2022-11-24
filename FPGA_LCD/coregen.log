@@ -1,0 +1,22 @@
+# Xilinx CORE Generator 6.1i
+# User = Sajjad
+Initializing default project...
+Loading plug-ins...
+All runtime messages will be recorded in F:\P\FMB\FPGA_LCD\coregen.log
+NEWPROJECT .
+SETPROJECT .
+# busformat=BusFormatAngleBracketNotRipped
+# designflow=VHDL
+# expandedprojectpath=F:\P\FMB\FPGA_LCD
+# flowvendor=Foundation_iSE
+# formalverification=None
+# simulationoutputproducts=VHDL
+# xilinxfamily=Virtex2
+# outputoption=DesignFlow
+# overwritefiles=Default
+# simvendor=ModelSim
+# expandedprojectpath=F:\P\FMB\FPGA_LCD
+Set current Project to F:\P\FMB\FPGA_LCD
+SET BusFormat = BusFormatAngleBracketNotRipped
+SETXIPCPORTHOST 1139
+XIPCPJSENDCORES spartan2

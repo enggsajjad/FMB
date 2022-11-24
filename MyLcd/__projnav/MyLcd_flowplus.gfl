@@ -1,0 +1,6 @@
+# XST flow : Creating project file
+lcd.prj
+# xst flow : RunXST
+lcd.prj
+__projnav/lcd.xst
+./xst

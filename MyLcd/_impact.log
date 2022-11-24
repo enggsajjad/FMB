@@ -1,0 +1,116 @@
+iMPACT Version: H.38
+iMPACT log file started on 2009/07/17 11:29:02
+// *** BATCH CMD : setPreference -pref UserLevel:NOVICE
+// *** BATCH CMD : setPreference -pref MessageLevel:DETAILED
+// *** BATCH CMD : setPreference -pref ConcurrentMode:FALSE
+// *** BATCH CMD : setPreference -pref UseHighz:FALSE
+// *** BATCH CMD : setPreference -pref ConfigOnFailure:STOP
+// *** BATCH CMD : setPreference -pref StartupCLock:AUTO_CORRECTION
+// *** BATCH CMD : setPreference -pref AutoSignature:FALSE
+// *** BATCH CMD : setPreference -pref KeepSVF:FALSE
+// *** BATCH CMD : setPreference -pref svfUseTime:FALSE
+// *** BATCH CMD : setPreference -pref UserLevel:NOVICE
+// *** BATCH CMD : setPreference -pref MessageLevel:DETAILED
+// *** BATCH CMD : setPreference -pref ConcurrentMode:FALSE
+// *** BATCH CMD : setPreference -pref UseHighz:FALSE
+// *** BATCH CMD : setPreference -pref ConfigOnFailure:STOP
+// *** BATCH CMD : setPreference -pref StartupCLock:AUTO_CORRECTION
+// *** BATCH CMD : setPreference -pref AutoSignature:FALSE
+// *** BATCH CMD : setPreference -pref KeepSVF:FALSE
+// *** BATCH CMD : setPreference -pref svfUseTime:FALSE
+// *** BATCH CMD : setMode -bs
+GUI --- Connect to selected cable...
+// *** BATCH CMD : setCable -port lpt1
+Connecting to cable (Parallel Port - LPT1).
+Checking cable driver.
+ Driver windrvr6.sys version = 7.0.0.0. LPT base address = 0378h.
+ ECP base address = 0778h.
+ ECP hardware is detected.
+Cable connection established.
+Connecting to cable (Parallel Port - LPT1) in ECP mode.
+Checking cable driver.
+ Driver xpc4drvr.sys version = 1.0.4.0. LPT base address = 0378h.
+ Cable Type = 1, Revision = 10.
+Cannot find speed table for this revision.
+Speed value not found for 0.
+ Setting cable speed to 0.
+Cable connection established.
+GUI --- Boundary-Scan Mode selected
+// *** BATCH CMD : Identify
+Speed value not found for 0.
+PROGRESS_START - Starting Operation.
+Speed value not found for 2500000.
+Identifying chain contents ....'1': : Manufacturer's ID =Xilinx xc2s200, Version : 8
+INFO:iMPACT:1777 - 
+Reading C:/Xilinx7.1/spartan2/data/xc2s200.bsd...
+Reading C:/Xilinx7.1/spartan2/data/xc2s200.bsd...
+INFO:iMPACT:501 - '1': Added Device xc2s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+'2': : Manufacturer's ID =Xilinx xcf02s, Version : 15
+INFO:iMPACT:1777 - 
+Reading C:/Xilinx7.1/xcf/data/xcf02s.bsd...
+Reading C:/Xilinx7.1/xcf/data/xcf02s.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf02s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+done.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+xaf02s_vo20
+xaf04s_vo20
+xc18v02_pc44
+xc18v02_vq44
+xc18v04_pc44
+xc18v04_vq44
+xcf02s_vo20
+xcf04s_vo20
+xcf08p_fs48
+xcf08p_vo48
+xcf16p_fs48
+xcf16p_vo48
+xcf32p_fs48
+xcf32p_vo48
+// *** BATCH CMD : setAttribute -position 1 -attr devicePartName -value "xcf02s"
+// *** BATCH CMD : setAttribute -position 1 -attr configFileName -value "F:\LCD_Controller\MyLcd\top.mcs"
+'1': Loading file 'F:\LCD_Controller\MyLcd\top.mcs' ...
+done.
+// *** BATCH CMD : setAttribute -position 2 -attr configFileName -value "F:\LCD_Controller\MyLcd\lcd.bit"
+'2': Loading file 'F:\LCD_Controller\MyLcd\lcd.bit' ...
+done.
+WARNING:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream stored in memory,
+but the original bitstream file remains unchanged.
+but the original bitstream file remains unchanged.
+INFO:iMPACT:501 - '2': Added Device xc2s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 1 -e -v -loadfpga 
+Speed value not found for 2500000.
+PROGRESS_START - Starting Operation.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Erasing device...
+Erasure completed successfully.
+done.
+'1': Putting device in ISP mode...done.
+'1': Putting device in ISP mode...done.
+'1': Verifying device...done.
+'1': Verification completed successfully.
+'1': Calculated checksum matches expected checksum, 002229098
+'1': Putting device in ISP mode...done.
+'1': Putting device in ISP mode...done.
+'1': Setting user-programmable bits...
+done.
+'1': Putting device in ISP mode...done.
+'1': Starting FPGA Load with Prom Data...INFO:iMPACT:563 - '1':Please ensure proper connections as specified by the data book ...
+'1': Programming completed successfully.
+Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =     16 sec.
+*****   Closing iMPACT program.   *****
+----------------------------------------------------------------------
+----------------------------------------------------------------------

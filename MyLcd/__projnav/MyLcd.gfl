@@ -1,0 +1,125 @@
+# XST (Creating Lso File) : 
+lcd.lso
+# xst flow : RunXST
+lcd_summary.html
+# xst flow : RunXST
+lcd.syr
+lcd.prj
+lcd.sprj
+lcd.ana
+lcd.stx
+lcd.cmd_log
+lcd.ngc
+lcd.ngr
+# Implmentation : Translate
+__projnav/ednTOngd_tcl.rsp
+"f:\lcd_controller\mylcd/_ngo"
+lcd.ngd
+lcd_ngdbuild.nav
+lcd.bld
+lcd.ucf.untf
+lcd.cmd_log
+# Implementation : Map
+lcd_summary.html
+# Implementation : Map
+lcd_map.ncd
+lcd.ngm
+lcd.pcf
+lcd.nc1
+lcd.mrp
+lcd_map.mrp
+lcd.mdf
+lcd.cmd_log
+MAP_NO_GUIDE_FILE_CPF "lcd"
+lcd_map.ngm
+# Implmentation : Post-Place & Route Timing
+__projnav/ncdTOtwr_tcl.rsp
+lcd.twr
+lcd.twx
+lcd.tsi
+lcd.cmd_log
+# Implementation : Place & Route
+lcd_summary.html
+# Implmentation : Place & Route
+__projnav/nc1TOncd_tcl.rsp
+lcd.ncd
+lcd.par
+lcd.pad
+lcd_pad.txt
+lcd_pad.csv
+lcd.pad_txt
+lcd.dly
+reportgen.log
+lcd.xpi
+lcd.grf
+lcd.itr
+lcd_last_par.ncd
+lcd.placed_ncd_tracker
+lcd.routed_ncd_tracker
+lcd.cmd_log
+PAR_NO_GUIDE_FILE_CPF "lcd"
+# Generate Programming File
+__projnav/lcd_ncdTOut_tcl.rsp
+__projnav/bitgen.rsp
+bitgen.ut
+lcd.ut
+# Generate Programming File
+lcd.bgn
+lcd.rbt
+lcd.ll
+lcd.msk
+lcd.drc
+lcd.nky
+lcd.bit
+lcd.bin
+lcd.isc
+lcd.cmd_log
+# Generate PROM, ACE, or JTAG File
+lcd.ace
+xilinx.sys
+lcd.mpm
+lcd.mcs
+lcd.prm
+lcd.dst
+lcd.exo
+lcd.tek
+lcd.hex
+lcd.svf
+lcd.stapl
+impact.cmd
+_impact.log
+_impact.cmd
+# Configure Device (iMPACT)
+lcd.prm
+lcd.isc
+lcd.svf
+xilinx.sys
+lcd.mcs
+lcd.exo
+lcd.hex
+lcd.tek
+lcd.dst
+lcd.dst_compressed
+lcd.mpm
+_impact.cmd
+_impact.log
+# Configure Device (iMPACT)
+lcd.prm
+lcd.isc
+lcd.svf
+xilinx.sys
+lcd.mcs
+lcd.exo
+lcd.hex
+lcd.tek
+lcd.dst
+lcd.dst_compressed
+lcd.mpm
+_impact.cmd
+_impact.log
+# xst flow : RunXST
+lcd_summary.html
+# xst flow : RunXST
+lcd_summary.html
+# xst flow : RunXST
+lcd_summary.html

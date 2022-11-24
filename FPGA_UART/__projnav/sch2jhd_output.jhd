@@ -1,0 +1,9 @@
+MODULE uart
+	SUBMODULE ua_receiver
+		INSTANCE XLXI_15
+	SUBMODULE clk_gen
+		INSTANCE XLXI_3
+	SUBMODULE test_uart
+		INSTANCE XLXI_4
+	SUBMODULE ua_transmitter
+		INSTANCE XLXI_16

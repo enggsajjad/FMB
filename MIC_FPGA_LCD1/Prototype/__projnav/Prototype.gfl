@@ -1,0 +1,10 @@
+# XST (Creating Lso File) : 
+iobuf8bit.lso
+# xst flow : RunXST
+iobuf8bit.syr
+iobuf8bit.prj
+iobuf8bit.sprj
+iobuf8bit.ana
+iobuf8bit.stx
+iobuf8bit.cmd_log
+iobuf8bit.ngr

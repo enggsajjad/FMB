@@ -1,0 +1,22 @@
+Release 7.1i ngdbuild H.38
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+
+Command Line: ngdbuild -intstyle ise -dd f:\lcd_controller\mylcd/_ngo -uc
+lcd.ucf -p xc2s200-pq208-5 lcd.ngc lcd.ngd 
+
+Reading NGO file 'F:/LCD_Controller/MyLcd/lcd.ngc' ...
+
+Applying constraints in "lcd.ucf" to the design...
+
+Checking timing specifications ...
+Checking expanded design ...
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 62376 kilobytes
+
+Writing NGD file "lcd.ngd" ...
+
+Writing NGDBUILD log file "lcd.bld"...

@@ -1,0 +1,456 @@
+Project Navigator Auto-Make Log File
+-------------------------------------
+
+
+
+
+
+
+
+
+
+
+Started process "Synthesize".
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "LcdWrite.v"
+Module <LcdWrite> compiled
+Compiling verilog file "lcd.v"
+Module <lcd> compiled
+No errors in compilation
+Analysis of file <"lcd.prj"> succeeded.
+ 
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <lcd>.
+	COMM = <u>0
+	DATA = <u>1
+	DLY4pt1ms = 90685
+	DLY100us = 2212
+	DLY40us = 885
+	DLY1pt64ms = 36275
+	FUNC_SET = <u>00111000
+	ENTR_SET = <u>00000110
+	DISP_SET = <u>00001100
+	DISP_CLR = <u>00000001
+	ROW1 = <u>10000000
+	ROW2 = <u>11000000
+	ROW3 = <u>10010100
+	ROW4 = <u>11010100
+	COL1 = <u>00000000
+	COL2 = <u>00000001
+	COL3 = <u>00000010
+	COL4 = <u>00000011
+	COL5 = <u>00000100
+	COL6 = <u>00000101
+	COL7 = <u>00000110
+	COL8 = <u>00000111
+	COL9 = <u>00001000
+	COL10 = <u>00001001
+	COL11 = <u>00001010
+	COL12 = <u>00001011
+	COL13 = <u>00001100
+	COL14 = <u>00001101
+	COL15 = <u>00001110
+	COL16 = <u>00001111
+	COL17 = <u>00010000
+	COL18 = <u>00010001
+	COL19 = <u>00010010
+	COL20 = <u>00010011
+Module <lcd> is correct for synthesis.
+ 
+Analyzing module <LcdWrite>.
+Module <LcdWrite> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <LcdWrite>.
+    Related source file is "LcdWrite.v".
+WARNING:Xst:646 - Signal <shift<3>> is assigned but never used.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 101                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <dout>.
+    Found 19-bit subtractor for signal <$n0000> created at line 74.
+    Found 17-bit comparator equal for signal <$n0007> created at line 69.
+    Found 19-bit comparator equal for signal <$n0009> created at line 74.
+    Found 4-bit comparator greatequal for signal <$n0013> created at line 89.
+    Found 4-bit comparator lessequal for signal <$n0014> created at line 89.
+    Found 17-bit register for signal <delay>.
+    Found 17-bit up counter for signal <dly_cntr>.
+    Found 4-bit up counter for signal <en_cntr>.
+    Found 4-bit register for signal <shift>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   2 Counter(s).
+	inferred  29 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <LcdWrite> synthesized.
+
+
+Synthesizing Unit <lcd>.
+    Related source file is "lcd.v".
+    Found 32x26-bit ROM for signal <din>.
+    Found 5-bit comparator less for signal <$n0001> created at line 44.
+    Found 5-bit up counter for signal <addr>.
+    Found 3-bit register for signal <shift>.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   1 Counter(s).
+	inferred   3 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <lcd> synthesized.
+
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Advanced RAM inference ...
+Advanced multiplier inference ...
+Advanced Registered AddSub inference ...
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <FSM_0> on signal <state[1:3]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 010
+ 001   | 001
+ 010   | 011
+ 011   | 100
+ 100   | 101
+ 101   | 000
+-------------------
+Dynamic shift register inference ...
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# FSMs                             : 1
+# ROMs                             : 1
+ 32x26-bit ROM                     : 1
+# Adders/Subtractors               : 1
+ 19-bit subtractor                 : 1
+# Counters                         : 3
+ 17-bit up counter                 : 1
+ 4-bit up counter                  : 1
+ 5-bit up counter                  : 1
+# Registers                        : 10
+ 1-bit register                    : 8
+ 17-bit register                   : 1
+ 8-bit register                    : 1
+# Comparators                      : 5
+ 17-bit comparator equal           : 1
+ 19-bit comparator equal           : 1
+ 4-bit comparator greatequal       : 1
+ 4-bit comparator lessequal        : 1
+ 5-bit comparator less             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <lcd> ...
+
+Optimizing unit <LcdWrite> ...
+Loading device for application Rf_Device from file 'v200.nph' in environment C:/Xilinx7.1.
+
+Mapping all equations...
+WARNING:Xst:1710 - FF/Latch  <LcdWriteInst/delay_12> (without init value) has a constant value of 0 in block <lcd>.
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block lcd, actual ratio is 4.
+Register <LcdWriteInst/delay_3> equivalent to <LcdWriteInst/delay_16> has been removed
+Register <LcdWriteInst/delay_13> equivalent to <LcdWriteInst/delay_16> has been removed
+Register <LcdWriteInst/delay_15> equivalent to <LcdWriteInst/delay_1> has been removed
+Register <LcdWriteInst/delay_11> equivalent to <LcdWriteInst/delay_7> has been removed
+Register <LcdWriteInst/delay_14> equivalent to <LcdWriteInst/delay_16> has been removed
+Register <LcdWriteInst/delay_4> equivalent to <LcdWriteInst/delay_0> has been removed
+Register <LcdWriteInst/delay_10> equivalent to <LcdWriteInst/delay_1> has been removed
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2s200pq208-5 
+
+ Number of Slices:                      79  out of   2352     3%  
+ Number of Slice Flip Flops:            51  out of   4704     1%  
+ Number of 4 input LUTs:               126  out of   4704     2%  
+ Number of bonded IOBs:                 13  out of    144     9%  
+ Number of GCLKs:                        1  out of      4    25%  
+
+
+=========================================================================
+TIMING REPORT
+
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 51    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 12.225ns (Maximum Frequency: 81.800MHz)
+   Minimum input arrival time before clock: 8.030ns
+   Maximum output required time after clock: 12.430ns
+   Maximum combinational path delay: No path found
+
+=========================================================================
+
+
+
+
+Started process "Translate".
+
+
+Command Line: ngdbuild -intstyle ise -dd f:\lcd_controller\mylcd/_ngo -uc
+lcd.ucf -p xc2s200-pq208-5 lcd.ngc lcd.ngd 
+
+Reading NGO file 'F:/LCD_Controller/MyLcd/lcd.ngc' ...
+
+Applying constraints in "lcd.ucf" to the design...
+
+Checking timing specifications ...
+Checking expanded design ...
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Writing NGD file "lcd.ngd" ...
+
+Writing NGDBUILD log file "lcd.bld"...
+
+NGDBUILD done.
+
+
+
+
+Started process "Map".
+
+Using target part "2s200pq208-5".
+Mapping design into LUTs...
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    0
+Logic Utilization:
+  Number of Slice Flip Flops:        43 out of  4,704    1%
+  Number of 4 input LUTs:           121 out of  4,704    2%
+Logic Distribution:
+    Number of occupied Slices:                          76 out of  2,352    3%
+    Number of Slices containing only related logic:     76 out of     76  100%
+    Number of Slices containing unrelated logic:         0 out of     76    0%
+        *See NOTES below for an explanation of the effects of unrelated logic
+Total Number 4 input LUTs:          143 out of  4,704    3%
+      Number used as logic:                       121
+      Number used as a route-thru:                 22
+   Number of bonded IOBs:            12 out of    140    8%
+      IOB Flip Flops:                               8
+   Number of GCLKs:                   1 out of      4   25%
+   Number of GCLKIOBs:                1 out of      4   25%
+
+Total equivalent gate count for design:  1,464
+Additional JTAG gate count for IOBs:  624
+Peak Memory Usage:  98 MB
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Mapping completed.
+See MAP report file "lcd_map.mrp" for details.
+
+
+
+
+Started process "Place & Route".
+
+
+
+
+Constraints file: lcd.pcf.
+Loading device for application Rf_Device from file 'v200.nph' in environment
+C:/Xilinx7.1.
+   "lcd" is an NCD, version 3.1, device xc2s200, package pq208, speed -5
+
+Initializing temperature to 85.000 Celsius. (default - Range: -40.000 to 100.000
+Celsius)
+Initializing voltage to 2.375 Volts. (default - Range: 2.375 to 2.625 Volts)
+
+
+Device speed data version:  "PRODUCTION 1.27 2005-01-22".
+
+
+Device Utilization Summary:
+
+   Number of GCLKs                     1 out of 4      25%
+   Number of External GCLKIOBs         1 out of 4      25%
+      Number of LOCed GCLKIOBs         1 out of 1     100%
+
+   Number of External IOBs            12 out of 140     8%
+      Number of LOCed IOBs            11 out of 12     91%
+
+   Number of SLICEs                   76 out of 2352    3%
+
+
+Overall effort level (-ol):   Standard (set by user)
+Placer effort level (-pl):    Standard (set by user)
+Placer cost table entry (-t): 1
+Router effort level (-rl):    Standard (set by user)
+
+
+Starting Placer
+
+Phase 1.1
+Phase 1.1 (Checksum:989831) REAL time: 0 secs 
+
+Phase 2.31
+Phase 2.31 (Checksum:1312cfe) REAL time: 0 secs 
+
+Phase 3.23
+Phase 3.23 (Checksum:1c9c37d) REAL time: 0 secs 
+
+Phase 4.3
+Phase 4.3 (Checksum:26259fc) REAL time: 0 secs 
+
+Phase 5.5
+Phase 5.5 (Checksum:2faf07b) REAL time: 0 secs 
+
+Phase 6.8
+......
+Phase 6.8 (Checksum:99cf09) REAL time: 0 secs 
+
+Phase 7.5
+Phase 7.5 (Checksum:42c1d79) REAL time: 0 secs 
+
+Phase 8.18
+Phase 8.18 (Checksum:4c4b3f8) REAL time: 0 secs 
+
+Phase 9.5
+Phase 9.5 (Checksum:55d4a77) REAL time: 0 secs 
+
+Writing design to file lcd.ncd
+
+
+Total REAL time to Placer completion: 1 secs 
+Total CPU time to Placer completion: 0 secs 
+
+Starting Router
+
+Phase 1: 565 unrouted;       REAL time: 1 secs 
+
+Phase 2: 518 unrouted;       REAL time: 5 secs 
+
+Phase 3: 134 unrouted;       REAL time: 5 secs 
+
+Phase 4: 0 unrouted;       REAL time: 5 secs 
+
+Total REAL time to Router completion: 5 secs 
+Total CPU time to Router completion: 4 secs 
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|           clk_BUFGP |      GCLKBUF1| No   |   39 |  0.216     |  0.763      |
++---------------------+--------------+------+------+------------+-------------+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 6 secs 
+Total CPU time to PAR completion: 5 secs 
+
+Peak Memory Usage:  85 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 0
+Number of info messages: 1
+
+Writing design to file lcd.ncd
+
+
+
+PAR done!
+
+Started process "Generate Post-Place & Route Static Timing".
+
+Loading device for application Rf_Device from file 'v200.nph' in environment
+C:/Xilinx7.1.
+   "lcd" is an NCD, version 3.1, device xc2s200, package pq208, speed -5
+
+Analysis completed Fri Jul 17 11:27:45 2009
+--------------------------------------------------------------------------------
+
+Generating Report ...
+
+Number of warnings: 0
+Total time: 1 secs 
+
+
+
+
+
+
+
+Started process "Generate Programming File".
+
+

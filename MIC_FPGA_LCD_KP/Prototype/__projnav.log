@@ -1,0 +1,1051 @@
+Project Navigator Auto-Make Log File
+-------------------------------------
+
+
+
+
+Started process "Synthesize".
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling source file "iobuf8bit.v"
+Module <iobuf8bit> compiled
+Compiling source file "mapping.v"
+Module <mapping> compiled
+No errors in compilation
+Analysis of file <mapping.prj> succeeded.
+ 
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+WARNING:HDLCompilers:260 - mapping.v line 37 Connection to inout port 'datauC' does not match port size
+Analyzing top module <mapping>.
+Module <mapping> is correct for synthesis.
+ 
+Analyzing module <iobuf8bit>.
+Module <iobuf8bit> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <iobuf8bit>.
+    Related source file is iobuf8bit.v.
+    Found 8-bit tristate buffer for signal <dataLCD>.
+    Found 8-bit tristate buffer for signal <datauC>.
+    Summary:
+	inferred  16 Tristate(s).
+Unit <iobuf8bit> synthesized.
+
+
+Synthesizing Unit <mapping>.
+    Related source file is mapping.v.
+WARNING:Xst:1777 - Inout <P0> is never used or assigned.
+WARNING:Xst:646 - Signal <Port0> is assigned but never used.
+Unit <mapping> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Tristates                        : 2
+  8-bit tristate buffer            : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <mapping> ...
+Loading device for application Xst from file 'v200.nph' in environment C:/Xilinx6.1.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block mapping, actual ratio is 0.
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2s200pq208-6 
+
+ Number of Slices:                       1  out of   2352     0%  
+ Number of 4 input LUTs:                 1  out of   4704     0%  
+ Number of bonded IOBs:                 26  out of    144    18%  
+ Number of TBUFs:                        8  out of   2352     0%  
+
+
+=========================================================================
+TIMING REPORT
+
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -6
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 10.951ns
+
+=========================================================================
+Completed process "Synthesize".
+
+
+
+Project Navigator Auto-Make Log File
+-------------------------------------
+
+
+Started process "Translate".
+
+
+Command Line: ngdbuild -intstyle ise -dd
+f:\fpga_micro_board\mic_fpga_lcd_kp\prototype/_ngo -uc pins.ucf -p
+xc2s200-pq208-6 mapping.ngc mapping.ngd 
+
+Reading NGO file "F:/FPGA_MICRO_BOARD/MIC_FPGA_LCD_KP/Prototype/mapping.ngc" ...
+Reading component libraries for design expansion...
+
+Annotating constraints to design from file "pins.ucf" ...
+ERROR:NgdBuild:755 - Line 5 in 'pins.ucf': Could not find net(s) 'P1_MSB<4>' in
+   the design.  To suppress this error specify the correct net name or remove
+   the constraint.  The 'Ignore I\O constraints on Invalid Object Names'
+   property can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 6 in 'pins.ucf': Could not find net(s) 'P1_MSB<5>' in
+   the design.  To suppress this error specify the correct net name or remove
+   the constraint.  The 'Ignore I\O constraints on Invalid Object Names'
+   property can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 7 in 'pins.ucf': Could not find net(s) 'P1_MSB<6>' in
+   the design.  To suppress this error specify the correct net name or remove
+   the constraint.  The 'Ignore I\O constraints on Invalid Object Names'
+   property can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 8 in 'pins.ucf': Could not find net(s) 'P1_MSB<7>' in
+   the design.  To suppress this error specify the correct net name or remove
+   the constraint.  The 'Ignore I\O constraints on Invalid Object Names'
+   property can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 10 in 'pins.ucf': Could not find net(s) 'P0<7>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 11 in 'pins.ucf': Could not find net(s) 'P0<6>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 12 in 'pins.ucf': Could not find net(s) 'P0<5>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 13 in 'pins.ucf': Could not find net(s) 'P0<4>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 14 in 'pins.ucf': Could not find net(s) 'P0<3>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 15 in 'pins.ucf': Could not find net(s) 'P0<2>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 16 in 'pins.ucf': Could not find net(s) 'P0<1>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 17 in 'pins.ucf': Could not find net(s) 'P0<0>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:Parsers:11 - Encountered unrecognized constraint while parsing.
+ERROR:NgdBuild:19 - Errors found while parsing constraint file "pins.ucf".
+
+Writing NGDBUILD log file "mapping.bld"...
+ERROR: NGDBUILD failed
+Process "Translate" did not complete.
+
+
+Project Navigator Auto-Make Log File
+-------------------------------------
+
+
+Started process "Translate".
+
+
+Command Line: ngdbuild -intstyle ise -dd
+f:\fpga_micro_board\mic_fpga_lcd_kp\prototype/_ngo -uc pins.ucf -p
+xc2s200-pq208-6 mapping.ngc mapping.ngd 
+
+Reading NGO file "F:/FPGA_MICRO_BOARD/MIC_FPGA_LCD_KP/Prototype/mapping.ngc" ...
+Reading component libraries for design expansion...
+
+Annotating constraints to design from file "pins.ucf" ...
+ERROR:NgdBuild:755 - Line 10 in 'pins.ucf': Could not find net(s) 'P0<7>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 11 in 'pins.ucf': Could not find net(s) 'P0<6>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 12 in 'pins.ucf': Could not find net(s) 'P0<5>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 13 in 'pins.ucf': Could not find net(s) 'P0<4>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 14 in 'pins.ucf': Could not find net(s) 'P0<3>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 15 in 'pins.ucf': Could not find net(s) 'P0<2>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 16 in 'pins.ucf': Could not find net(s) 'P0<1>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:NgdBuild:755 - Line 17 in 'pins.ucf': Could not find net(s) 'P0<0>' in the
+   design.  To suppress this error specify the correct net name or remove the
+   constraint.  The 'Ignore I\O constraints on Invalid Object Names' property
+   can also be set ( -aul switch for command line users).
+ERROR:Parsers:11 - Encountered unrecognized constraint while parsing.
+ERROR:NgdBuild:19 - Errors found while parsing constraint file "pins.ucf".
+
+Writing NGDBUILD log file "mapping.bld"...
+ERROR: NGDBUILD failed
+Process "Translate" did not complete.
+
+
+Project Navigator Auto-Make Log File
+-------------------------------------
+
+
+
+
+Started process "Synthesize".
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling source file "iobuf8bit.v"
+Module <iobuf8bit> compiled
+Compiling source file "mapping.v"
+Module <mapping> compiled
+No errors in compilation
+Analysis of file <mapping.prj> succeeded.
+ 
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <mapping>.
+Module <mapping> is correct for synthesis.
+ 
+Analyzing module <iobuf8bit>.
+Module <iobuf8bit> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <iobuf8bit>.
+    Related source file is iobuf8bit.v.
+    Found 8-bit tristate buffer for signal <dataLCD>.
+    Found 8-bit tristate buffer for signal <datauC>.
+    Summary:
+	inferred  16 Tristate(s).
+Unit <iobuf8bit> synthesized.
+
+
+Synthesizing Unit <mapping>.
+    Related source file is mapping.v.
+Unit <mapping> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Tristates                        : 2
+  8-bit tristate buffer            : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <mapping> ...
+Loading device for application Xst from file 'v200.nph' in environment C:/Xilinx6.1.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block mapping, actual ratio is 0.
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2s200pq208-6 
+
+ Number of Slices:                       1  out of   2352     0%  
+ Number of 4 input LUTs:                 1  out of   4704     0%  
+ Number of bonded IOBs:                 34  out of    144    23%  
+
+
+=========================================================================
+TIMING REPORT
+
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -6
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 9.957ns
+
+=========================================================================
+Completed process "Synthesize".
+
+
+
+Started process "Translate".
+
+
+Command Line: ngdbuild -intstyle ise -dd
+f:\fpga_micro_board\mic_fpga_lcd_kp\prototype/_ngo -uc pins.ucf -p
+xc2s200-pq208-6 mapping.ngc mapping.ngd 
+
+Reading NGO file "F:/FPGA_MICRO_BOARD/MIC_FPGA_LCD_KP/Prototype/mapping.ngc" ...
+Reading component libraries for design expansion...
+
+Annotating constraints to design from file "pins.ucf" ...
+
+Checking timing specifications ...
+Checking expanded design ...
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 40288 kilobytes
+
+Writing NGD file "mapping.ngd" ...
+
+Writing NGDBUILD log file "mapping.bld"...
+
+NGDBUILD done.
+Completed process "Translate".
+
+
+
+Started process "Map".
+
+Using target part "2s200pq208-6".
+Removing unused or disabled logic...
+Running cover...
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    0
+Logic Utilization:
+Logic Distribution:
+    Number of Slices containing only related logic:      0 out of      0    0%
+    Number of Slices containing unrelated logic:         0 out of      0    0%
+        *See NOTES below for an explanation of the effects of unrelated logic
+   Number of bonded IOBs:            34 out of    140   24%
+
+Total equivalent gate count for design:  48
+Additional JTAG gate count for IOBs:  1,632
+Peak Memory Usage:  62 MB
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity -
+   e.g. two LUTs are "related" if they share common inputs.
+   When assembling slices, Map gives priority to combine logic that
+   is related.  Doing so results in the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin
+   packing unrelated logic into a slice once 99% of the slices are
+   occupied through related logic packing.
+
+   Note that once logic distribution reaches the 99% level through
+   related logic packing, this does not mean the device is completely
+   utilized.  Unrelated logic packing will then begin, continuing until
+   all usable LUTs and FFs are occupied.  Depending on your timing
+   budget, increased levels of unrelated logic packing may adversely
+   affect the overall timing performance of your design.
+
+
+Mapping completed.
+See MAP report file "mapping_map.mrp" for details.
+Completed process "Map".
+
+Mapping Module mapping . . .
+MAP command line:
+map -intstyle ise -p xc2s200-pq208-6 -cm area -pr b -k 4 -c 100 -tx off -o mapping_map.ncd mapping.ngd mapping.pcf
+Mapping Module mapping: DONE
+
+
+
+Started process "Place & Route".
+
+
+
+
+
+Constraints file: mapping.pcf
+
+Loading device database for application Par from file "mapping_map.ncd".
+   "mapping" is an NCD, version 2.38, device xc2s200, package pq208, speed -6
+Loading device for application Par from file 'v200.nph' in environment
+C:/Xilinx6.1.
+Device speed data version:  PRODUCTION 1.27 2003-06-19.
+
+
+Resolving physical constraints.
+Finished resolving physical constraints.
+
+Device utilization summary:
+
+   Number of External IOBs            34 out of 140    24%
+      Number of LOCed External IOBs   34 out of 34    100%
+
+
+
+
+
+Overall effort level (-ol):   Standard (set by user)
+Placer effort level (-pl):    Standard (set by user)
+Placer cost table entry (-t): 1
+Router effort level (-rl):    Standard (set by user)
+
+
+Phase 1.1
+Phase 1.1 (Checksum:9896a1) REAL time: 0 secs 
+
+Phase 2.23
+Phase 2.23 (Checksum:1312cfe) REAL time: 0 secs 
+
+Phase 3.3
+Phase 3.3 (Checksum:1c9c37d) REAL time: 0 secs 
+
+Phase 4.5
+Phase 4.5 (Checksum:26259fc) REAL time: 0 secs 
+
+Phase 5.8
+Phase 5.8 (Checksum:9a85e8) REAL time: 0 secs 
+
+Phase 6.5
+Phase 6.5 (Checksum:39386fa) REAL time: 0 secs 
+
+Phase 7.18
+Phase 7.18 (Checksum:42c1d79) REAL time: 0 secs 
+
+Writing design to file mapping.ncd.
+
+Total REAL time to Placer completion: 0 secs 
+Total CPU time to Placer completion: 0 secs 
+
+
+Phase 1: 41 unrouted;       REAL time: 0 secs 
+
+Phase 2: 41 unrouted;       REAL time: 0 secs 
+
+Phase 3: 2 unrouted;       REAL time: 0 secs 
+
+Phase 4: 0 unrouted;       REAL time: 0 secs 
+
+Total REAL time to Router completion: 0 secs 
+Total CPU time to Router completion: 0 secs 
+
+Generating "par" statistics.
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 2 secs 
+Total CPU time to PAR completion: 1 secs 
+
+Peak Memory Usage:  53 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Writing design to file mapping.ncd.
+
+
+PAR done.
+Completed process "Place & Route".
+
+
+Started process "Generate Post-Place & Route Static Timing".
+
+
+Analysis completed Mon Aug 03 10:30:26 2009
+--------------------------------------------------------------------------------
+
+Generating Report ...
+
+Completed process "Generate Post-Place & Route Static Timing".
+
+Place & Route Module mapping . . .
+PAR command line: par -w -intstyle ise -ol std -t 1 mapping_map.ncd mapping.ncd mapping.pcf
+PAR completed successfully
+
+
+
+
+Started process "Generate Programming File".
+
+Completed process "Generate Programming File".
+
+
+
+Project Navigator Auto-Make Log File
+-------------------------------------
+
+
+
+
+Started process "Synthesize".
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling source file "iobuf8bit.v"
+Module <iobuf8bit> compiled
+Compiling source file "mapping.v"
+Module <mapping> compiled
+No errors in compilation
+Analysis of file <mapping.prj> succeeded.
+ 
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <mapping>.
+Module <mapping> is correct for synthesis.
+ 
+Analyzing module <iobuf8bit>.
+Module <iobuf8bit> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <iobuf8bit>.
+    Related source file is iobuf8bit.v.
+    Found 8-bit tristate buffer for signal <dataLCD>.
+    Found 8-bit tristate buffer for signal <datauC>.
+    Summary:
+	inferred  16 Tristate(s).
+Unit <iobuf8bit> synthesized.
+
+
+Synthesizing Unit <mapping>.
+    Related source file is mapping.v.
+Unit <mapping> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Tristates                        : 2
+  8-bit tristate buffer            : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <mapping> ...
+Loading device for application Xst from file 'v200.nph' in environment C:/Xilinx6.1.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block mapping, actual ratio is 0.
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2s200pq208-6 
+
+ Number of Slices:                       1  out of   2352     0%  
+ Number of 4 input LUTs:                 1  out of   4704     0%  
+ Number of bonded IOBs:                 34  out of    144    23%  
+
+
+=========================================================================
+TIMING REPORT
+
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -6
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 9.957ns
+
+=========================================================================
+Completed process "Synthesize".
+
+
+
+Started process "Translate".
+
+
+Command Line: ngdbuild -intstyle ise -dd
+f:\fpga_micro_board\mic_fpga_lcd_kp\prototype/_ngo -uc pins.ucf -p
+xc2s200-pq208-6 mapping.ngc mapping.ngd 
+
+Reading NGO file "F:/FPGA_MICRO_BOARD/MIC_FPGA_LCD_KP/Prototype/mapping.ngc" ...
+Reading component libraries for design expansion...
+
+Annotating constraints to design from file "pins.ucf" ...
+
+Checking timing specifications ...
+Checking expanded design ...
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 39648 kilobytes
+
+Writing NGD file "mapping.ngd" ...
+
+Writing NGDBUILD log file "mapping.bld"...
+
+NGDBUILD done.
+Completed process "Translate".
+
+
+
+Started process "Map".
+
+Using target part "2s200pq208-6".
+Removing unused or disabled logic...
+Running cover...
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    0
+Logic Utilization:
+Logic Distribution:
+    Number of Slices containing only related logic:      0 out of      0    0%
+    Number of Slices containing unrelated logic:         0 out of      0    0%
+        *See NOTES below for an explanation of the effects of unrelated logic
+   Number of bonded IOBs:            34 out of    140   24%
+
+Total equivalent gate count for design:  48
+Additional JTAG gate count for IOBs:  1,632
+Peak Memory Usage:  62 MB
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity -
+   e.g. two LUTs are "related" if they share common inputs.
+   When assembling slices, Map gives priority to combine logic that
+   is related.  Doing so results in the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin
+   packing unrelated logic into a slice once 99% of the slices are
+   occupied through related logic packing.
+
+   Note that once logic distribution reaches the 99% level through
+   related logic packing, this does not mean the device is completely
+   utilized.  Unrelated logic packing will then begin, continuing until
+   all usable LUTs and FFs are occupied.  Depending on your timing
+   budget, increased levels of unrelated logic packing may adversely
+   affect the overall timing performance of your design.
+
+
+Mapping completed.
+See MAP report file "mapping_map.mrp" for details.
+Completed process "Map".
+
+Mapping Module mapping . . .
+MAP command line:
+map -intstyle ise -p xc2s200-pq208-6 -cm area -pr b -k 4 -c 100 -tx off -o mapping_map.ncd mapping.ngd mapping.pcf
+Mapping Module mapping: DONE
+
+
+
+Started process "Place & Route".
+
+
+
+
+
+Constraints file: mapping.pcf
+
+Loading device database for application Par from file "mapping_map.ncd".
+   "mapping" is an NCD, version 2.38, device xc2s200, package pq208, speed -6
+Loading device for application Par from file 'v200.nph' in environment
+C:/Xilinx6.1.
+Device speed data version:  PRODUCTION 1.27 2003-06-19.
+
+
+Resolving physical constraints.
+Finished resolving physical constraints.
+
+Device utilization summary:
+
+   Number of External IOBs            34 out of 140    24%
+      Number of LOCed External IOBs   34 out of 34    100%
+
+
+
+
+
+Overall effort level (-ol):   Standard (set by user)
+Placer effort level (-pl):    Standard (set by user)
+Placer cost table entry (-t): 1
+Router effort level (-rl):    Standard (set by user)
+
+
+Phase 1.1
+Phase 1.1 (Checksum:9896a1) REAL time: 2 secs 
+
+Phase 2.23
+Phase 2.23 (Checksum:1312cfe) REAL time: 2 secs 
+
+Phase 3.3
+Phase 3.3 (Checksum:1c9c37d) REAL time: 2 secs 
+
+Phase 4.5
+Phase 4.5 (Checksum:26259fc) REAL time: 2 secs 
+
+Phase 5.8
+Phase 5.8 (Checksum:9a85e8) REAL time: 2 secs 
+
+Phase 6.5
+Phase 6.5 (Checksum:39386fa) REAL time: 2 secs 
+
+Phase 7.18
+Phase 7.18 (Checksum:42c1d79) REAL time: 2 secs 
+
+Writing design to file mapping.ncd.
+
+Total REAL time to Placer completion: 2 secs 
+Total CPU time to Placer completion: 0 secs 
+
+
+Phase 1: 41 unrouted;       REAL time: 2 secs 
+
+Phase 2: 41 unrouted;       REAL time: 2 secs 
+
+Phase 3: 2 unrouted;       REAL time: 2 secs 
+
+Phase 4: 0 unrouted;       REAL time: 2 secs 
+
+Total REAL time to Router completion: 2 secs 
+Total CPU time to Router completion: 0 secs 
+
+Generating "par" statistics.
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 4 secs 
+Total CPU time to PAR completion: 1 secs 
+
+Peak Memory Usage:  52 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Writing design to file mapping.ncd.
+
+
+PAR done.
+Completed process "Place & Route".
+
+
+Started process "Generate Post-Place & Route Static Timing".
+
+
+Analysis completed Thu Aug 06 12:41:21 2009
+--------------------------------------------------------------------------------
+
+Generating Report ...
+
+Completed process "Generate Post-Place & Route Static Timing".
+
+Place & Route Module mapping . . .
+PAR command line: par -w -intstyle ise -ol std -t 1 mapping_map.ncd mapping.ncd mapping.pcf
+PAR completed successfully
+
+
+
+
+Started process "Generate Programming File".
+
+Completed process "Generate Programming File".
+
+
+
+Project Navigator Auto-Make Log File
+-------------------------------------
+
+deleting mapping.lso
+deleting mapping.syr
+deleting mapping.prj
+deleting mapping.sprj
+deleting mapping.ana
+deleting mapping.stx
+deleting mapping.cmd_log
+deleting mapping.ngc
+deleting mapping.ngr
+deleting __projnav/ngdbuild.err
+deleting __projnav/ednTOngd_tcl.rsp
+deleting f:\fpga_micro_board\mic_fpga_lcd_kp\prototype/_ngo
+deleting mapping.ngd
+deleting mapping_ngdbuild.nav
+deleting mapping.bld
+deleting pins.ucf.untf
+deleting mapping.cmd_log
+deleting __projnav/ngdbuild.err
+deleting __projnav/ednTOngd_tcl.rsp
+deleting f:\fpga_micro_board\mic_fpga_lcd_kp\prototype/_ngo
+deleting mapping.ngd
+deleting mapping_ngdbuild.nav
+deleting mapping.bld
+deleting pins.ucf.untf
+deleting mapping.cmd_log
+deleting mapping.lso
+deleting mapping.syr
+deleting mapping.prj
+deleting mapping.sprj
+deleting mapping.ana
+deleting mapping.stx
+deleting mapping.cmd_log
+deleting mapping.ngc
+deleting mapping.ngr
+deleting __projnav/ngdbuild.err
+deleting __projnav/ednTOngd_tcl.rsp
+deleting f:\fpga_micro_board\mic_fpga_lcd_kp\prototype/_ngo
+deleting mapping.ngd
+deleting mapping_ngdbuild.nav
+deleting mapping.bld
+deleting pins.ucf.untf
+deleting mapping.cmd_log
+deleting mapping_map.ncd
+deleting mapping.ngm
+deleting mapping.pcf
+deleting mapping.nc1
+deleting mapping.mrp
+deleting mapping_map.mrp
+deleting mapping.mdf
+deleting __projnav/map.log
+deleting mapping.cmd_log
+deleting __projnav/ncdTOtwr_tcl.rsp
+deleting __projnav/posttrc.log
+deleting mapping.twr
+deleting mapping.twx
+deleting mapping.tsi
+deleting mapping.cmd_log
+deleting __projnav/nc1TOncd_tcl.rsp
+deleting mapping.ncd
+deleting mapping.par
+deleting mapping.pad
+deleting mapping_pad.txt
+deleting mapping_pad.csv
+deleting mapping.pad_txt
+deleting mapping.dly
+deleting reportgen.log
+deleting mapping.xpi
+deleting mapping.grf
+deleting mapping.itr
+deleting mapping_last_par.ncd
+deleting __projnav/par.log
+deleting mapping.placed_ncd_tracker
+deleting mapping.routed_ncd_tracker
+deleting mapping.cmd_log
+deleting __projnav/mapping_ncdTOut_tcl.rsp
+deleting __projnav/bitgen.rsp
+deleting bitgen.ut
+deleting mapping.ut
+deleting mapping.bgn
+deleting mapping.rbt
+deleting mapping.ll
+deleting mapping.msk
+deleting mapping.drc
+deleting mapping.nky
+deleting mapping.bit
+deleting mapping.bin
+deleting mapping.isc
+deleting mapping.cmd_log
+deleting mapping.ace
+deleting xilinx.sys
+deleting mapping.mpm
+deleting mapping.mcs
+deleting mapping.prm
+deleting mapping.dst
+deleting mapping.exo
+deleting mapping.tek
+deleting mapping.hex
+deleting mapping.svf
+deleting mapping.stapl
+deleting impact.cmd
+deleting _impact.log
+deleting _impact.cmd
+deleting mapping.lso
+deleting mapping.syr
+deleting mapping.prj
+deleting mapping.sprj
+deleting mapping.ana
+deleting mapping.stx
+deleting mapping.cmd_log
+deleting mapping.ngc
+deleting mapping.ngr
+deleting __projnav/ngdbuild.err
+deleting __projnav/ednTOngd_tcl.rsp
+deleting f:\fpga_micro_board\mic_fpga_lcd_kp\prototype/_ngo
+deleting mapping.ngd
+deleting mapping_ngdbuild.nav
+deleting mapping.bld
+deleting pins.ucf.untf
+deleting mapping.cmd_log
+deleting mapping_map.ncd
+deleting mapping.ngm
+deleting mapping.pcf
+deleting mapping.nc1
+deleting mapping.mrp
+deleting mapping_map.mrp
+deleting mapping.mdf
+deleting __projnav/map.log
+deleting mapping.cmd_log
+deleting __projnav/ncdTOtwr_tcl.rsp
+deleting __projnav/posttrc.log
+deleting mapping.twr
+deleting mapping.twx
+deleting mapping.tsi
+deleting mapping.cmd_log
+deleting __projnav/nc1TOncd_tcl.rsp
+deleting mapping.ncd
+deleting mapping.par
+deleting mapping.pad
+deleting mapping_pad.txt
+deleting mapping_pad.csv
+deleting mapping.pad_txt
+deleting mapping.dly
+deleting reportgen.log
+deleting mapping.xpi
+deleting mapping.grf
+deleting mapping.itr
+deleting mapping_last_par.ncd
+deleting __projnav/par.log
+deleting mapping.placed_ncd_tracker
+deleting mapping.routed_ncd_tracker
+deleting mapping.cmd_log
+deleting __projnav/mapping_ncdTOut_tcl.rsp
+deleting __projnav/bitgen.rsp
+deleting bitgen.ut
+deleting mapping.ut
+deleting mapping.bgn
+deleting mapping.rbt
+deleting mapping.ll
+deleting mapping.msk
+deleting mapping.drc
+deleting mapping.nky
+deleting mapping.bit
+deleting mapping.bin
+deleting mapping.isc
+deleting mapping.cmd_log
+deleting mapping.ace
+deleting xilinx.sys
+deleting mapping.mpm
+deleting mapping.mcs
+deleting mapping.prm
+deleting mapping.dst
+deleting mapping.exo
+deleting mapping.tek
+deleting mapping.hex
+deleting mapping.svf
+deleting mapping.stapl
+deleting impact.cmd
+deleting _impact.log
+deleting _impact.cmd
+deleting mapping.prj
+deleting mapping.prj
+deleting __projnav/mapping.xst
+deleting ./xst
+deleting mapping.prj
+deleting mapping.prj
+deleting __projnav/mapping.xst
+deleting ./xst
+deleting mapping.prj
+deleting mapping.prj
+deleting __projnav/mapping.xst
+deleting ./xst
+deleting __projnav/Prototype.gfl
+deleting __projnav/Prototype_flowplus.gfl
+Finished cleaning up project
+

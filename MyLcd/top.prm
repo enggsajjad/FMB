@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator H.38
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o f:\lcd_controller\mylcd//top -u 0 F:\LCD_Controller\MyLcd\lcd.bit -x xc17v01 
+
+PROM f:\lcd_controller\mylcd//top.prm map: Fri Jul 17 11:28:10 2009
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          205K
+PROM start    0000:0000
+PROM end      0003:33ff
+PROM checksum 01575c98
+
+        Addr1        Addr2 File(s)
+    0000:0000    0002:8c43 F:/LCD_Controller/MyLcd/lcd.bit

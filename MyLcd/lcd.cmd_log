@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn __projnav/lcd.xst -ofn lcd.syr
+ngdbuild -intstyle ise -dd "f:\lcd_controller\mylcd/_ngo" -uc lcd.ucf  -p xc2s200-pq208-5 lcd.ngc lcd.ngd
+map -intstyle ise -p xc2s200-pq208-5 -cm area -pr b -k 4 -c 100 -tx off -o lcd_map.ncd lcd.ngd lcd.pcf
+par -w -intstyle ise -ol std -t 1 lcd_map.ncd lcd.ncd lcd.pcf
+trce -intstyle ise -e 3 -l 3 -s 5 -xml lcd lcd.ncd -o lcd.twr lcd.pcf
+bitgen -intstyle ise -f lcd.ut lcd.ncd

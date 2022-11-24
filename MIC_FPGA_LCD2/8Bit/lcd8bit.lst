@@ -1,0 +1,472 @@
+C51 COMPILER V6.11.4C,  LCD8BIT                   07/31/109  16:18:54  PAGE  1
+
+QCW(0x00002D1A)
+
+WIN32 C51 COMPILER V6.11.4C, COMPILATION OF MODULE LCD8BIT   
+OBJECT MODULE PLACED IN f:\fpga_micro_board\mic_fpga_lcd2\8bit\lcd8bit.obj
+COMPILER INVOKED BY: C51.EXE F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD2\8BIT\LCD8BIT.C OB
+            -JECT(F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD2\8BIT\LCD8BIT.OBJ) PIN(C:\FSI
+            -\INC) NOAM PR(F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD2\8BIT\LCD8BIT.LST) C
+            -D SB OE(1) SM FP(NOFLOAT) PW(80) 
+
+stmt level    source
+   1          #include<reg51.h>
+   2          #define LCD 		P0
+   3          #define Putc 		WriteData
+   4          sbit BKLT	=	P1^0;
+   5          sbit RS		=	P1^1;
+   6          sbit RW 		=	P1^2;
+   7          sbit ELCD	= 	P1^3;
+   8          
+   9          void Delay2ms(void)
+  10          {
+  11   1      	/*TH1 = 0xF8;TL1 = 0xCD;	//1ms	*/
+  12   1      	TH1 = 0xF1;TL1 = 0x9A;	//2ms
+  13   1      	TR1  = 1;
+  14   1      	while(!TF1);
+  15   1      	TR1  = 0;
+  16   1      	TF1  = 0;
+  17   1      }
+  18          void Delay40us(void)
+  19          {
+  20   1      	TH1 = 0xFF;TL1 = 0xB7;	//40us
+  21   1      	TR1  = 1;
+  22   1      	while(!TF1);
+  23   1      	TR1  = 0;
+  24   1      	TF1  = 0;
+  25   1      }
+  26          void WriteControl(unsigned char d)
+  27          {
+  28   1      LCD = d;
+  29   1      RS = 0;
+  30   1      ELCD = 1;
+  31   1      ELCD = 0;
+  32   1      Delay40us(); //Approximates the Delay of 40us
+  33   1      }
+  34          
+  35          void WriteData (unsigned char d)
+  36          {
+  37   1      LCD = d;
+  38   1      RS = 1;
+  39   1      ELCD = 1;
+  40   1      ELCD = 0;
+  41   1      Delay40us(); //Approximates the Delay of 40us
+  42   1      }
+  43          /*
+  44          void WriteControl(unsigned char d)
+  45          {
+  46          	RS   = 0;// RS   = 0;
+  47          	RW   = 0;// RW   = 0;
+  48          	ELCD = 0;// ELCD = 0;
+  49          	LCD  = d;// LCD  = d;
+  50          	ELCD = 1;// ELCD = 1;
+  51          	ELCD = 0;// ELCD = 0;
+  52          	RW   = 1;// RW   = 1;
+  53          
+  54          	for(Delay=0; Delay<500; Delay++);//200
+  55          }
+  56          
+  57          void WriteData (unsigned char d)
+  58          {
+  59          	RS   = 1;// RS   = 1;
+  60          	ELCD = 0;// ELCD = 0;
+  61          	RW   = 0;// RW   = 0;
+  62          	LCD  = d;// LCD  = d;
+  63          	ELCD = 1;// ELCD = 1;
+  64          	ELCD = 0;// ELCD = 0;
+  65          	RW   = 1;// RW   = 1;
+  66          
+  67          	for(Delay=0; Delay<200; Delay++); //60
+  68          }
+  69          */
+  70          /*
+  71          void WriteControl(unsigned char d)
+  72          {
+  73          	RS   = 0;
+  74          	RW   = 0;
+  75          	ELCD = 0;
+  76          	_nop_();//Added Sajjad
+  77          	LCD  = d;
+  78          	ELCD = 1;
+  79          	_nop_();//Added Sajjad
+  80          	for(Delay=0; Delay<500; Delay++);//Added Sajjad
+  81          	ELCD = 0;
+  82          	RW   = 1;
+  83          
+  84          	//for(Delay=0; Delay<500; Delay++);//200
+  85          }
+  86          
+  87          void WriteData (unsigned char d)
+  88          {
+  89          	RS   = 1;
+  90          	ELCD = 0;
+  91          	_nop_();//Added Sajjad
+  92          	RW   = 0;
+  93          	LCD  = d;
+  94          	ELCD = 1;
+  95          	_nop_();//Added Sajjad
+  96          	for(Delay=0; Delay<500; Delay++);//Added Sajjad
+  97          	ELCD = 0;
+  98          	RW   = 1;
+  99          
+ 100          	//for(Delay=0; Delay<200; Delay++); //60
+ 101          }
+ 102          */
+ 103          void InitDisp()
+ 104          {
+ 105   1      	RW = 0;	//Always Writing to LCD
+ 106   1      	WriteControl(0x38); //(8-bit interface, 2 lines, 5*7 Pixels)
+ 107   1      	Delay2ms();	//Approximates the Delay of 4.1ms
+ 108   1      	Delay2ms();
+ 109   1      	WriteControl(0x38);
+ 110   1      	Delay40us(); //Approximates the Delay of 100us
+ 111   1      	Delay40us();
+ 112   1      	WriteControl(0x38);
+ 113   1      	WriteControl(0x06); //(Increment AC, Display Shift Off)
+ 114   1      	WriteControl(0x0C); //Make cursor invisible
+ 115   1      }
+ 116          
+ 117          void LCDClear (void)
+ 118          {
+ 119   1      	WriteControl(0x01);
+ 120   1      	Delay2ms();	//Approximates the Delay of 1.64ms
+ 121   1      }
+ 122          
+ 123          void LCDCursor (char r, char c)
+ 124          {
+ 125   1      	switch (r)
+ 126   1      	{
+ 127   2      		case 1: WriteControl(0x80 + c - 1); break;
+ 128   2      		case 2: WriteControl(0xc0 + c - 1); break;
+ 129   2      		case 3: WriteControl(0x94 + c - 1); break;
+ 130   2      		case 4: WriteControl(0xd4 + c - 1); break;
+ 131   2      		default: break;
+ 132   2      	}
+ 133   1      }
+ 134          void PutStr (char *s)
+ 135          {
+ 136   1      	
+ 137   1      	while (*s)
+ 138   1      	{
+ 139   2      		WriteData(*s);
+ 140   2      		s++;
+ 141   2      	}
+ 142   1      }
+ 143          void main(void)
+ 144          {
+ 145   1       int k;
+ 146   1       for(k=0;k<50000;k++);
+ 147   1       P0 = 0x00;
+ 148   1       P1 = 0x00;
+ 149   1       TMOD = 0x11;
+ 150   1       for(k=0;k<250;k++)
+ 151   1       	Delay2ms();
+ 152   1       //TMOD = 0x11;
+ 153   1       InitDisp();
+ 154   1       LCDClear();
+ 155   1       PutStr("Sajjad Hussain");
+ 156   1       LCDCursor(2,1);
+ 157   1       PutStr("ICCC");
+ 158   1       while(1);
+ 159   1      }
+ 160          
+ 161          
+ 162          
+ 163          
+ 164          
+ 165          
+ 166          
+ 167          
+ 168          
+ 169          
+ 170          
+ 171          
+ 172          
+ 173          
+ 174          
+ 175          
+ 176          
+ 177          
+ 178          
+ 179          
+C51 COMPILER V6.11.4C,  LCD8BIT                   07/31/109  16:18:54  PAGE  2
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+            ; FUNCTION Delay2ms (BEGIN)
+                                           ; SOURCE LINE # 12 
+0000 758DF1         MOV    TH1,#0F1H
+0003 758B9A         MOV    TL1,#09AH
+                                           ; SOURCE LINE # 13 
+0006 D28E           SETB   TR1
+0008         ?WHILE1:
+                                           ; SOURCE LINE # 14 
+0008 308FFD         JNB    TF1,?WHILE1
+                                           ; SOURCE LINE # 15 
+000B C28E           CLR    TR1
+                                           ; SOURCE LINE # 16 
+000D C28F           CLR    TF1
+000F 22             RET    
+
+            ; FUNCTION Delay2ms (END)
+
+            ; FUNCTION Delay40us (BEGIN)
+                                           ; SOURCE LINE # 20 
+0000 758DFF         MOV    TH1,#0FFH
+0003 758BB7         MOV    TL1,#0B7H
+                                           ; SOURCE LINE # 21 
+0006 D28E           SETB   TR1
+0008         ?WHILE3:
+                                           ; SOURCE LINE # 22 
+0008 308FFD         JNB    TF1,?WHILE3
+                                           ; SOURCE LINE # 23 
+000B C28E           CLR    TR1
+                                           ; SOURCE LINE # 24 
+000D C28F           CLR    TF1
+000F 22             RET    
+
+            ; FUNCTION Delay40us (END)
+
+            ; FUNCTION _WriteControl (BEGIN)
+              ; Register R7 is assigned to parameter d
+                                           ; SOURCE LINE # 28 
+0000 8F80           MOV    P0,R7
+                                           ; SOURCE LINE # 29 
+0002 C291           CLR    RS
+                                           ; SOURCE LINE # 30 
+0004 D293           SETB   ELCD
+                                           ; SOURCE LINE # 31 
+0006 C293           CLR    ELCD
+                                           ; SOURCE LINE # 32 
+0008 120000  R      LCALL  Delay40us
+000B 22             RET    
+
+            ; FUNCTION _WriteControl (END)
+
+            ; FUNCTION _WriteData (BEGIN)
+              ; Register R7 is assigned to parameter d
+                                           ; SOURCE LINE # 37 
+0000 8F80           MOV    P0,R7
+                                           ; SOURCE LINE # 38 
+0002 D291           SETB   RS
+                                           ; SOURCE LINE # 39 
+0004 D293           SETB   ELCD
+                                           ; SOURCE LINE # 40 
+0006 C293           CLR    ELCD
+                                           ; SOURCE LINE # 41 
+0008 120000  R      LCALL  Delay40us
+000B 22             RET    
+
+            ; FUNCTION _WriteData (END)
+
+            ; FUNCTION InitDisp (BEGIN)
+                                           ; SOURCE LINE # 105 
+0000 C292           CLR    RW
+                                           ; SOURCE LINE # 106 
+0002 7F38           MOV    R7,#038H
+0004 120000  R      LCALL  _WriteControl
+                                           ; SOURCE LINE # 107 
+0007 120000  R      LCALL  Delay2ms
+                                           ; SOURCE LINE # 108 
+000A 120000  R      LCALL  Delay2ms
+                                           ; SOURCE LINE # 109 
+000D 120000  R      LCALL  _WriteControl
+                                           ; SOURCE LINE # 110 
+0010 120000  R      LCALL  Delay40us
+                                           ; SOURCE LINE # 111 
+0013 120000  R      LCALL  Delay40us
+                                           ; SOURCE LINE # 112 
+0016 120000  R      LCALL  _WriteControl
+                                           ; SOURCE LINE # 113 
+0019 7F06           MOV    R7,#006H
+001B 120000  R      LCALL  _WriteControl
+                                           ; SOURCE LINE # 114 
+001E 7F0C           MOV    R7,#00CH
+0020 120000  R      LCALL  _WriteControl
+0023 22             RET    
+
+            ; FUNCTION InitDisp (END)
+
+            ; FUNCTION LCDClear (BEGIN)
+                                           ; SOURCE LINE # 119 
+0000 7F01           MOV    R7,#001H
+0002 120000  R      LCALL  _WriteControl
+                                           ; SOURCE LINE # 120 
+0005 120000  R      LCALL  Delay2ms
+0008 22             RET    
+
+            ; FUNCTION LCDClear (END)
+
+            ; FUNCTION _LCDCursor (BEGIN)
+              ; Register R7 is assigned to parameter r
+              ; Register R5 is assigned to parameter c
+                                           ; SOURCE LINE # 125 
+0000 EF             MOV    A,R7
+0001 14             DEC    A
+0002 600A           JZ     ?CASE4
+0004 14             DEC    A
+0005 600F           JZ     ?CASE5
+0007 14             DEC    A
+0008 6014           JZ     ?CASE6
+000A 14             DEC    A
+000B 6019           JZ     ?CASE7
+000D 22             RET    
+000E         ?CASE4:
+                                           ; SOURCE LINE # 127 
+000E ED             MOV    A,R5
+000F 247F           ADD    A,#07FH
+0011 FF             MOV    R7,A
+0012 120000  R      LCALL  _WriteControl
+0015 22             RET    
+0016         ?CASE5:
+                                           ; SOURCE LINE # 128 
+0016 ED             MOV    A,R5
+0017 24BF           ADD    A,#0BFH
+0019 FF             MOV    R7,A
+001A 120000  R      LCALL  _WriteControl
+001D 22             RET    
+001E         ?CASE6:
+                                           ; SOURCE LINE # 129 
+001E ED             MOV    A,R5
+001F 2493           ADD    A,#093H
+0021 FF             MOV    R7,A
+0022 120000  R      LCALL  _WriteControl
+0025 22             RET    
+0026         ?CASE7:
+                                           ; SOURCE LINE # 130 
+0026 ED             MOV    A,R5
+0027 24D3           ADD    A,#0D3H
+0029 FF             MOV    R7,A
+002A 120000  R      LCALL  _WriteControl
+                                           ; SOURCE LINE # 131 
+002D 22             RET    
+
+            ; FUNCTION _LCDCursor (END)
+
+            ; FUNCTION _PutStr (BEGIN)
+              ; Register R0R4R5 is assigned to parameter s
+                                           ; SOURCE LINE # 140 
+0000 EB             MOV    A,R3
+0001 FD             MOV    R5,A
+0002 EA             MOV    A,R2
+0003 FC             MOV    R4,A
+0004 E9             MOV    A,R1
+0005 F8             MOV    R0,A
+0006         ?WHILE5:
+                                           ; SOURCE LINE # 137 
+0006 ED             MOV    A,R5
+0007 FB             MOV    R3,A
+0008 EC             MOV    A,R4
+0009 FA             MOV    R2,A
+000A E8             MOV    A,R0
+000B F9             MOV    R1,A
+000C 120000  R      LCALL  IPGN1?C
+000F 6014           JZ     ?NXT7
+                                           ; SOURCE LINE # 139 
+0011 ED             MOV    A,R5
+0012 FB             MOV    R3,A
+0013 EC             MOV    A,R4
+0014 FA             MOV    R2,A
+0015 E8             MOV    A,R0
+0016 F9             MOV    R1,A
+0017 120000  R      LCALL  IPGN1?C
+001A FF             MOV    R7,A
+001B 120000  R      LCALL  _WriteData
+                                           ; SOURCE LINE # 140 
+001E 08             INC    R0
+001F E8             MOV    A,R0
+0020 70E4           JNZ    ?WHILE5
+0022 0C             INC    R4
+0023 80E1           SJMP   ?WHILE5
+0025         ?NXT7:
+0025 22             RET    
+
+            ; FUNCTION _PutStr (END)
+
+            ; FUNCTION main (BEGIN)
+              ; R4R5 is assigned to k
+                                           ; SOURCE LINE # 146 
+0000 7B50           MOV    R3,#050H
+0002 7AC4           MOV    R2,#0C4H
+0004         ?NXT13:
+0004 DBFE           DJNZ   R3,?NXT13
+0006 DAFC           DJNZ   R2,?NXT13
+                                           ; SOURCE LINE # 147 
+0008 758000         MOV    P0,#000H
+                                           ; SOURCE LINE # 148 
+000B 759000         MOV    P1,#000H
+                                           ; SOURCE LINE # 149 
+000E 758911         MOV    TMOD,#011H
+              ; R4R5 is assigned to k
+                                           ; SOURCE LINE # 150 
+0011 E4             CLR    A
+0012 FD             MOV    R5,A
+0013         ?FOR3:
+                                           ; SOURCE LINE # 151 
+0013 120000  R      LCALL  Delay2ms
+0016 0D             INC    R5
+0017 BDFAF9         CJNE   R5,#0FAH,?FOR3
+                                           ; SOURCE LINE # 153 
+001A 120000  R      LCALL  InitDisp
+                                           ; SOURCE LINE # 154 
+001D 120000  R      LCALL  LCDClear
+                                           ; SOURCE LINE # 155 
+0020 7B05           MOV    R3,#005H
+0022 7A00    R      MOV    R2,#000H
+0024 7900    R      MOV    R1,#000H
+0026 120000  R      LCALL  _PutStr
+                                           ; SOURCE LINE # 156 
+0029 7F02           MOV    R7,#002H
+002B 7D01           MOV    R5,#001H
+002D 120000  R      LCALL  _LCDCursor
+                                           ; SOURCE LINE # 157 
+0030 7B05           MOV    R3,#005H
+0032 7A00    R      MOV    R2,#000H
+0034 7900    R      MOV    R1,#000H
+0036 120000  R      LCALL  _PutStr
+0039         ?WHILE7:
+                                           ; SOURCE LINE # 158 
+0039 80FE           SJMP   ?WHILE7
+
+            ; FUNCTION main (END)
+
+C51 COMPILER V6.11.4C,  LCD8BIT                   07/31/109  16:18:54  PAGE  3
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+Delay2ms . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+Delay40us. . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+WriteControl . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  d?042. . . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+  d?042. . . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+WriteData. . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  d?043. . . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+  d?043. . . . . . . . . . . . . . . .  PARAM   DATA    BASE    0000H   1    
+InitDisp . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+LCDClear . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+LCDCursor. . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  r?045. . . . . . . . . . . . . . . .  PARAM   DATA    CHAR    0000H   1    
+  c?046. . . . . . . . . . . . . . . .  PARAM   DATA    CHAR    0001H   1    
+  r?045. . . . . . . . . . . . . . . .  PARAM   DATA    CHAR    0000H   1    
+  c?046. . . . . . . . . . . . . . . .  PARAM   DATA    CHAR    0001H   1    
+PutStr . . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+  s?047. . . . . . . . . . . . . . . .  PARAM   DATA    PTR     0000H   3    
+  s?047. . . . . . . . . . . . . . . .  PARAM   DATA    PTR     0000H   3    
+main . . . . . . . . . . . . . . . . .  PUBLIC  CODE    PROC    -----   -----
+k?049. . . . . . . . . . . . . . . . .  PUBLIC  DATA    INT     0000H   2    
+C51 COMPILER V6.11.4C,  LCD8BIT                   07/31/109  16:18:54  PAGE  4
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    244    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILATION COMPLETE.  0 WARNING,  0 ERROR

@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn __projnav/iobuf8bit.xst -ofn iobuf8bit.syr

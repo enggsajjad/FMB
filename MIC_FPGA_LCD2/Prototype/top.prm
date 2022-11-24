@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator G.23
+Copyright (c) 1995-2003 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o f:\fpga_micro_board\mic_fpga_lcd2\prototype//top -u 0 F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD2\Prototype\mapping.bit -x xc17v01 
+
+PROM f:\fpga_micro_board\mic_fpga_lcd2\prototype//top.prm map: Fri Jul 31 15:53:35 2009
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          205K
+PROM start    0000:0000
+PROM end      0003:33ff
+PROM checksum 0157de03
+
+        Addr1        Addr2 File(s)
+    0000:0000    0002:8c43 F:/FPGA_MICRO_BOARD/MIC_FPGA_LCD2/Prototype/mapping.bit

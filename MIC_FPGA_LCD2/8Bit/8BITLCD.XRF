@@ -1,0 +1,22 @@
+WIN32 L51 CODE BANKING LINKER/LOCATOR V4.08.06,  INVOKED BY: 
+L51.EXE f:\fpga_micro_board\mic_fpga_lcd2\8bit\lcd8bit.OBJ  to  F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD2\8BIT\8BITLCD.ABS PR(F:\FPGA_MICRO_BOARD\MIC_FPGA_LCD2\8BIT\8BITLCD.M51) SN(1066142959415E46769E694) PW(80) RS(256) ix 
+
+INTER-MODULE CROSS-REFERENCE LISTING
+------------------------------------
+
+    NAME. . . . . . . . USAGE   MODULE NAMES
+    ----------------------------------------
+    ?C_START3 . . . . . CODE    [C3S]:  LCD8BIT 
+    DELAY2MS  . . . . . CODE    [LCD8BIT]: 
+    DELAY40US . . . . . CODE    [LCD8BIT]: 
+    IDATALEN  . . . . .         [_C_IDATALEN]:  C3S 
+    INITDISP  . . . . . CODE    [LCD8BIT]: 
+    IPGN1?C . . . . . . CODE    [IPGN1]:  LCD8BIT 
+    LCDCLEAR  . . . . . CODE    [LCD8BIT]: 
+    MAIN  . . . . . . . CODE    [LCD8BIT]:  C3S 
+    _INITP2?  . . . . .         [_C_IDATALEN]:  C3S 
+    _LCDCURSOR  . . . . CODE    [LCD8BIT]: 
+    _PUTSTR . . . . . . CODE    [LCD8BIT]: 
+    _STACK  . . . . . . IDATA   [LCD8BIT]:  C3S 
+    _WRITECONTROL . . . CODE    [LCD8BIT]: 
+    _WRITEDATA  . . . . CODE    [LCD8BIT]: 

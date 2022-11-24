@@ -1,0 +1,1 @@
+set allSynthModules {clk_gen.MOD UA_Transmitter.MOD top_tx.MOD}

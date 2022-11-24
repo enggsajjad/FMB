@@ -1,0 +1,30 @@
+WIN32 L51 CODE BANKING LINKER/LOCATOR V4.08.06,  INVOKED BY: 
+L51.EXE f:\p\fmb\mic_fpga_lcd_kp\lcd_kp\main.OBJ  to  F:\P\FMB\MIC_FPGA_LCD_KP\LCD_KP\PROTOTYPE.ABS PR(F:\P\FMB\MIC_FPGA_LCD_KP\LCD_KP\PROTOTYPE.M51) SN(1066142959415E46769E694) PW(80) RS(256) ix 
+
+INTER-MODULE CROSS-REFERENCE LISTING
+------------------------------------
+
+    NAME. . . . . . . . USAGE   MODULE NAMES
+    ----------------------------------------
+    ?C_IMUL . . . . . . CODE    [MULS]:  MAIN 
+    ?C_IMULX  . . . . . CODE    [MULS]: 
+    ?C_START3 . . . . . CODE    [C3S]:  MAIN 
+    DELAYONEMS  . . . . CODE    [MAIN]: 
+    GETC  . . . . . . . CODE    [MAIN]: 
+    IDATALEN  . . . . .         [_C_IDATALEN]:  C3S 
+    IPGN1?C . . . . . . CODE    [IPGN1]:  MAIN 
+    KEY . . . . . . . . DATA    [MAIN]: 
+    KEYPAD  . . . . . . CODE    [MAIN]: 
+    LCDBUSY . . . . . . CODE    [MAIN]: 
+    LCDCLEAR  . . . . . CODE    [MAIN]: 
+    LCDINIT . . . . . . CODE    [MAIN]: 
+    MAIN  . . . . . . . CODE    [MAIN]:  C3S 
+    _DELAYSEC . . . . . CODE    [MAIN]: 
+    _INITP2?  . . . . .         [_C_IDATALEN]:  C3S 
+    _LCDGOTOXY  . . . . CODE    [MAIN]: 
+    _LCDWRITECHAR . . . CODE    [MAIN]: 
+    _LCDWRITECMD  . . . CODE    [MAIN]: 
+    _LCDWRITESTR  . . . CODE    [MAIN]: 
+    _SENDCHAR . . . . . CODE    [MAIN]: 
+    _SENDSTR  . . . . . CODE    [MAIN]: 
+    _STACK  . . . . . . IDATA   [MAIN]:  C3S 
